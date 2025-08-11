@@ -7,6 +7,10 @@
   <meta name="description" content="Quantum Lynx LLC provides infection control consulting services for physician-owned hospitals. Services include consulting, remote surveillance, survey support, crisis response, and program management." />
   <!-- Tailwind CSS from CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css">
+  <!-- Optional custom stylesheet for small tweaks -->
+  <link rel="stylesheet" href="assets/site.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <!-- Google Analytics GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVJ882KZ3T"></script>
   <script>
@@ -16,7 +20,7 @@
     gtag('config', 'G-MVJ882KZ3T');
   </script>
 </head>
-<body class="bg-white text-gray-900">
+<body class="bg-white text-gray-900 flex flex-col min-h-screen">
   <!-- Header -->
   <header class="bg-blue-900 text-white">
     <div class="container mx-auto px-4 py-6 flex justify-between items-center">
@@ -31,36 +35,37 @@
       </nav>
     </div>
   </header>
-  <!-- Hero -->
-  <section class="bg-gray-100 py-16">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-4xl font-bold mb-4">Infection Control Solutions for Physician‑Owned Hospitals</h2>
-      <p class="text-lg mb-8">Partner with our certified infection prevention experts to safeguard your patients and exceed accreditation standards.</p>
-      <a href="#contact" class="bg-blue-900 text-white px-6 py-3 rounded hover:bg-blue-700">Get Started</a>
+  <!-- Hero with image background -->
+  <section class="relative">
+    <img src="https://images.unsplash.com/photo-1581094273471-71791f8ce11a?auto=format&fit=crop&w=1920&q=80" alt="Hospital corridor" class="w-full h-96 object-cover">
+    <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center text-center p-4">
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Infection Control Solutions for Physician‑Owned Hospitals</h2>
+      <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl">Partner with our certified infection prevention experts to safeguard your patients and exceed accreditation standards.</p>
+      <a href="#contact" class="bg-blue-500 hover:bg-blue-700 text-white px-6 py-3 rounded-md transition">Get Started</a>
     </div>
   </section>
   <!-- Services -->
-  <section id="services" class="py-16">
+  <section id="services" class="py-16 bg-gray-100">
     <div class="container mx-auto px-4">
       <h3 class="text-3xl font-bold mb-8 text-center">Our Services</h3>
       <div class="grid md:grid-cols-2 gap-8">
-        <div>
+        <div class="p-4 bg-white rounded shadow">
           <h4 class="text-xl font-semibold mb-2">Infection Control Consulting</h4>
           <p>Remote or on‑site consulting by certified Infection Preventionists to develop and optimize your infection prevention program.</p>
         </div>
-        <div>
+        <div class="p-4 bg-white rounded shadow">
           <h4 class="text-xl font-semibold mb-2">Surveillance Support</h4>
           <p>Remote HAI surveillance and NHSN data submission provided by certified professionals to improve accuracy and efficiency.</p>
         </div>
-        <div>
+        <div class="p-4 bg-white rounded shadow">
           <h4 class="text-xl font-semibold mb-2">Survey Support</h4>
           <p>Expert guidance during regulatory and accreditation surveys to ensure compliance and peace of mind.</p>
         </div>
-        <div>
+        <div class="p-4 bg-white rounded shadow">
           <h4 class="text-xl font-semibold mb-2">Crisis Response</h4>
           <p>Rapid consultation for infection control emergencies, including support for natural disasters and CMS immediate jeopardy situations.</p>
         </div>
-        <div>
+        <div class="p-4 bg-white rounded shadow md:col-span-2">
           <h4 class="text-xl font-semibold mb-2">Program Management</h4>
           <p>Long‑term on‑site Infection Prevention staffing, leadership support, and remote/hybrid program management to maintain excellence.</p>
         </div>
@@ -68,36 +73,41 @@
     </div>
   </section>
   <!-- Savings -->
-  <section class="bg-gray-100 py-16">
+  <section class="py-16">
     <div class="container mx-auto px-4 text-center">
       <h3 class="text-3xl font-bold mb-4">Proven Savings</h3>
       <p class="mb-8">Our evidence-based strategies and standardized templates help you save time and resources while improving patient outcomes.</p>
-      <ul class="grid sm:grid-cols-3 gap-8">
-        <li>
-          <span class="text-4xl font-bold text-blue-900">30%</span><br>
-          Reduction in survey preparation time
-        </li>
-        <li>
-          <span class="text-4xl font-bold text-blue-900">20%</span><br>
-          Savings on staffing costs
-        </li>
-        <li>
-          <span class="text-4xl font-bold text-blue-900">100%</span><br>
-          Success rate on accreditation surveys
-        </li>
-      </ul>
+      <div class="grid sm:grid-cols-3 gap-8">
+        <div class="p-4">
+          <span class="text-4xl font-bold text-blue-900">30%</span>
+          <p class="mt-2">Reduction in survey preparation time</p>
+        </div>
+        <div class="p-4">
+          <span class="text-4xl font-bold text-blue-900">20%</span>
+          <p class="mt-2">Savings on staffing costs</p>
+        </div>
+        <div class="p-4">
+          <span class="text-4xl font-bold text-blue-900">100%</span>
+          <p class="mt-2">Success rate on accreditation surveys</p>
+        </div>
+      </div>
     </div>
   </section>
-  <!-- About -->
-  <section id="about" class="py-16">
-    <div class="container mx-auto px-4">
-      <h3 class="text-3xl font-bold mb-8 text-center">About Us</h3>
-      <p class="mb-4">Quantum Lynx LLC is led by certified Infection Preventionists with extensive experience in hospital infection control. We leverage a rich bank of templates, policies, and evidence‑based practices to support your infection prevention programs. Our leadership has guided numerous hospitals through successful accreditation and regulatory surveys.</p>
-      <p class="mb-4">We offer flexible service models tailored to your needs, including remote consulting, hybrid support, and long-term program management. Our mission is to ensure safe, efficient, and compliant healthcare facilities while delivering measurable savings.</p>
+  <!-- About with image -->
+  <section id="about" class="py-16 bg-gray-100">
+    <div class="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <h3 class="text-3xl font-bold mb-4">About Us</h3>
+        <p class="mb-4">Quantum Lynx LLC is led by certified Infection Preventionists with extensive experience in hospital infection control. We leverage a rich bank of templates, policies, and evidence‑based practices to support your infection prevention programs. Our leadership has guided numerous hospitals through successful accreditation and regulatory surveys.</p>
+        <p class="mb-4">We offer flexible service models tailored to your needs, including remote consulting, hybrid support, and long-term program management. Our mission is to ensure safe, efficient, and compliant healthcare facilities while delivering measurable savings.</p>
+      </div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1579154217130-802ddefa0716?auto=format&fit=crop&w=1920&q=80" alt="Infection prevention team" class="rounded shadow-lg w-full h-80 object-cover">
+      </div>
     </div>
   </section>
   <!-- Testimonials -->
-  <section id="testimonials" class="bg-gray-100 py-16">
+  <section id="testimonials" class="py-16">
     <div class="container mx-auto px-4 text-center">
       <h3 class="text-3xl font-bold mb-8">Testimonials</h3>
       <div class="space-y-8">
@@ -117,7 +127,7 @@
     </div>
   </section>
   <!-- Contact -->
-  <section id="contact" class="py-16">
+  <section id="contact" class="py-16 bg-gray-100 flex-grow">
     <div class="container mx-auto px-4">
       <h3 class="text-3xl font-bold mb-4 text-center">Get in Touch</h3>
       <p class="text-center mb-8">Let’s discuss how we can support your infection prevention goals.</p>
@@ -144,7 +154,7 @@
       <p class="text-center mt-4">Prefer email? <a href="mailto:quantumlynxllc@gmail.com?subject=Consultation%20Inquiry" class="text-blue-900 underline">QuantumLynx</a></p>
       <div class="text-center mt-4">
         <a href="https://www.linkedin.com/company/quantum-lynx-llc/" class="text-blue-900 underline">Careers</a> •
-        <a href="assets/QuantumLynx_Capabilities.pdf" class="text-blue-900 underline">Capabilities PDF</a>
+        <a href="assets/QuantumLynx_Capabilities.pdf" class="text-blue-900 underline" download>Capabilities PDF</a>
       </div>
     </div>
   </section>
