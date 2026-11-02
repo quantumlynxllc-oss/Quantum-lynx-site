@@ -16,7 +16,7 @@ test('contract rejects unknown keys, missing required form fields, invalid email
 });
 
 test('patient details are rejected on all text surfaces without rejecting business terminology', () => {
-  for (const text of ['MRN 123456', 'DOB 01/02/1980', 'date of birth: 1980-01-02', 'SSN 123-45-6789', '123-45-6789', 'patient Jane Doe', 'John Doe tested positive for MRSA', 'patient admitted 10/29/2026', 'room #123']) {
+  for (const text of ['MRN 123456', 'DOB 01/02/1980', 'date of birth: 1980-01-02', 'SSN 123-45-6789', '123-45-6789', 'patient Jane Doe', 'Patient Jane Doe', 'patient name: jane doe', 'John Doe tested positive for MRSA', 'patient admitted 10/29/2026', 'room #123']) {
     assert.equal(containsPatientDetails(text), true, text);
     assert.deepEqual(validateLead({ ...lead, company: text }), { ok: false, code: 'patient_information' });
   }

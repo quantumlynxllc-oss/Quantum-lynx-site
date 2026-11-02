@@ -68,3 +68,5 @@ html.ql-fonts {
 main:focus { outline: none; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; } }
 .ql-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+/* Owner-approved WCAG AA correction; original design styles stay untouched. */
+.ql-credentials .k { color: var(--fg-accent-light); }

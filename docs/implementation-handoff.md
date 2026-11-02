@@ -51,13 +51,21 @@ Run the supplied prototype with `python3 -m http.server 8741`. Run the productio
 
 Local Lighthouse release-build results: phone 95 performance, 97 accessibility, 100 best practices, 100 SEO; desktop 100 performance, 97 accessibility, 100 best practices, 100 SEO. Preview SEO scores are lower because preview indexing is intentionally blocked. These are local production-build measurements, not Vercel measurements.
 
-The browser suite checked 45 page/viewport combinations, eight interaction flows, no console errors, and no tracker requests with consent declined. Its remaining failures are the supplied credential-label contrast.
+The browser suite checked 45 page/viewport combinations, ten interaction flows, no console errors, and no tracker requests with consent declined. The final local browser run passed all 45 page/viewport checks and ten interaction checks with zero automated accessibility violations, zero unexpected console errors, and zero tracker requests with consent declined. The owner-approved credential contrast correction is included.
 
-## Design conflict flagged for owner decision
+## Approved design correction
 
-The supplied `.ql-credentials .k` red has a measured contrast ratio of 3.7:1 against the paper background; WCAG AA requires 4.5:1 at that size. The existing `--fg-accent-light` token is an accessible substitute. Owner confirmation was requested before changing those four labels.
+The supplied `.ql-credentials .k` red has a measured contrast ratio of 3.7:1 against the paper background; WCAG AA requires 4.5:1 at that size. The existing `--fg-accent-light` token is an accessible substitute. The owner approved this substitution on November 2, 2026. The correction lives in app/globals.css; the supplied source CSS remains unchanged.
 
 The reference screenshots include the prototype's assistant link and footer bar; those intentionally disappear in Phase 1 as required by `docs/page-spec.md`. The Readiness form gains the required no-PHI notice and anti-abuse controls.
+
+## Deployment record
+
+Repository: https://github.com/quantumlynxllc-oss/Quantum-lynx-site
+
+Review branch: `codex/website-rebuild-2026-11-02`. Draft pull request: https://github.com/quantumlynxllc-oss/Quantum-lynx-site/pull/1
+
+The existing production deployment `dpl_9arwQB3ehAEfBgYuRfEtX6fX5YyK` is retained. Review deployments use the existing project `prj_VXXnVCJSVUbBHyFylroS06IxZQoW` in team `team_uqDdDKFrXCV8dRGdQ17CxFB4`.
 
 ## Release
 

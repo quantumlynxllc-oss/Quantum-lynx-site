@@ -37,7 +37,8 @@ export const PHI_MESSAGE = 'Please remove patient details. This form cannot acce
 const PHI_PATTERNS = [
   /\b(?:mrn|medical\s+record\s+(?:number|no)|ssn|social\s+security|dob|date\s+of\s+birth)\b/i,
   /\b\d{3}[- ]\d{2}[- ]\d{4}\b/,
-  /\bpatient(?:'s)?\s+(?:name\s*(?:is|:)?\s*)?[A-Z][a-z]+\s+[A-Z][a-z]+\b/,
+  /\b[Pp]atient(?:'s)?\s+(?!(?:[Ss]afety|[Cc]are|[Ee]xperience|[Rr]elations)\b)(?:name\s*(?:is|:)?\s*)?[A-Z][a-z]+\s+[A-Z][a-z]+\b/,
+  /\bpatient(?:'s)?\s+name\s*(?:is|:)\s*\S+\s+\S+/i,
   /\b[A-Z][a-z]+\s+[A-Z][a-z]+\s+(?:was\s+|is\s+|has\s+|with\s+)?(?:diagnosed|admitted|treated|tested\s+positive|infected|suffering|MRSA|COVID|C\.?\s*diff|tuberculosis)\b/i,
   /\b(?:patient|diagnosis|diagnosed|admitted|discharged)\b.{0,60}\b\d{1,2}[/-]\d{1,2}[/-]\d{2,4}\b/i,
   /\b(?:patient|room|bed)\s*(?:#|number|no\.?|:)\s*\d+\b/i

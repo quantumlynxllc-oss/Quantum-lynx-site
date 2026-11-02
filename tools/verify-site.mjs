@@ -95,6 +95,36 @@ try {
   report.interactions.push('Cookie settings reopens equal-weight Accept and Decline choices');
   await page.screenshot({ path: fileURLToPath(new URL('consent-390.png', out)), fullPage: true });
   await context.close();
+  const choices = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+  const choicesPage = await choices.newPage();
+  const trackers = [];
+  await choicesPage.route(/googletagmanager|hs-scripts|assets\.apollo\.io/, async route => {
+    trackers.push(route.request().url());
+    await route.fulfill({ status: 200, contentType: 'application/javascript', body: '' });
+  });
+  await choicesPage.goto(base, { waitUntil: 'domcontentloaded' });
+  await choicesPage.keyboard.press('Tab');
+  assert.equal(await choicesPage.getByRole('link', { name: 'Skip to main content' }).evaluate(el => el === document.activeElement), true);
+  await choicesPage.keyboard.press('Enter');
+  assert.equal(await choicesPage.locator('main').evaluate(el => el === document.activeElement), true);
+  report.interactions.push('Keyboard skip link reaches main content with visible focus');
+  assert.equal(trackers.length, 0);
+  await choicesPage.getByRole('button', { name: 'Accept', exact: true }).click();
+  await choicesPage.waitForFunction(() => document.querySelector('#ql-ga4') && document.querySelector('#hs-script-loader'));
+  await choicesPage.getByRole('button', { name: 'The IP role is vacant', exact: true }).click();
+  const events = await choicesPage.evaluate(() => (window.dataLayer || []).map(value => Array.from(value)));
+  assert.ok(events.some(event => event[0] === 'event' && event[1] === 'triage_select' && event[2]?.priority === 'vacant'));
+  assert.ok(!JSON.stringify(events).includes('website-test@example.org'));
+  const acceptedRequests = trackers.length;
+  assert.ok(acceptedRequests >= 2);
+  await choicesPage.getByRole('button', { name: 'Cookie settings', exact: true }).click();
+  await choicesPage.getByRole('button', { name: 'Decline', exact: true }).click();
+  await choicesPage.waitForLoadState('load');
+  await choicesPage.getByRole('link', { name: 'Services', exact: true }).click();
+  assert.equal(trackers.length, acceptedRequests);
+  assert.equal(await choicesPage.locator('[data-ql-tracker]').count(), 0);
+  report.interactions.push('Trackers load only after Accept; Decline prevents loading on the next page (vendor scripts stubbed)');
+  await choices.close();
   // Readable page content is server-rendered and works without JavaScript.
   const noJS = await browser.newContext({ javaScriptEnabled: false });
   const noJSPage = await noJS.newPage(); await noJSPage.goto(`${base}/services/survey-support`);
