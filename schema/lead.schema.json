@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "quantum-lynx/lead.schema.json",
+  "title": "POST /api/lead request body",
+  "description": "Every capture surface posts this shape. Reject unknown keys. Never accept free text that has not passed the PHI filter.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["channel", "email", "consent_version"],
+  "properties": {
+    "channel": { "enum": ["form", "readiness", "assistant", "voice"] },
+    "name": { "type": "string", "maxLength": 120 },
+    "email": { "type": "string", "format": "email", "maxLength": 254 },
+    "company": { "type": "string", "maxLength": 160 },
+    "jobtitle": { "type": "string", "maxLength": 120 },
+    "phone": { "type": "string", "maxLength": 32 },
+    "priority": { "enum": ["survey", "nhsn", "vacant", "crisis", "rebuild", "other"] },
+    "facility_type": { "enum": ["physician_owned_hospital", "surgical_center", "ltac", "other"] },
+    "timeline": { "enum": ["under_90_days", "under_12_months", "unknown"] },
+    "readiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["score", "tier", "exposures"],
+      "properties": {
+        "score": { "type": "integer", "minimum": 0, "maximum": 12 },
+        "tier": { "enum": ["ready", "exposed", "at_risk"] },
+        "exposures": { "type": "array", "maxItems": 3, "items": { "type": "string", "maxLength": 120 } }
+      }
+    },
+    "attribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "landing_page": { "type": "string", "maxLength": 300 },
+        "referrer": { "type": "string", "maxLength": 300 },
+        "utm_source": { "type": "string", "maxLength": 120 },
+        "utm_medium": { "type": "string", "maxLength": 120 },
+        "utm_campaign": { "type": "string", "maxLength": 120 },
+        "gclid": { "type": "string", "maxLength": 200 },
+        "hutk": { "type": "string", "maxLength": 64 }
+      }
+    },
+    "consent_version": { "type": "string", "maxLength": 20 },
+    "turnstile_token": { "type": "string", "maxLength": 2048 },
+    "website": { "type": "string", "maxLength": 0, "description": "Honeypot. Must be empty." }
+  }
+}

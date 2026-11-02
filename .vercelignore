@@ -1,0 +1,13 @@
+node_modules
+.next
+.git
+reports
+.env.local
+.env.*.local
+prototype
+docs
+design/reference
+tests
+AGENTS.md
+CLAUDE.md
+*.tsbuildinfo

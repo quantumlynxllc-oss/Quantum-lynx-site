@@ -1,0 +1,316 @@
+/* =============================================================
+   Quantum Lynx — Design Tokens
+   Clinical-Modern: BSL-3 precision, D1 athletic discipline,
+   W Hotels–grade sleekness. White + Deep Slate grounded,
+   Pink→Orange gradient as high-energy accent.
+   ============================================================= */
+
+/* ------------------------- FONTS --------------------------- */
+/* Stacks. If webfont files are present in /fonts they override.
+   Fallback stacks are chosen so the system still reads clinical.
+   -------------------------------------------------------- */
+
+@font-face {
+  font-family: "QL Display";
+  src: local("Neue Haas Grotesk Display Pro"),
+       local("Neue Haas Grotesk Display"),
+       local("Inter Tight"),
+       local("Helvetica Neue");
+  font-weight: 400 800;
+  font-display: swap;
+}
+
+:root {
+  /* Type families — pair a precise grotesk (display/UI) with a
+     mono for data/tabular readouts. No serif. */
+  --font-display: "Neue Haas Grotesk Display Pro", "Inter Tight",
+                  "Helvetica Neue", "Arial", sans-serif;
+  --font-sans:    "Neue Haas Grotesk Text Pro", "Inter", "Helvetica Neue",
+                  "Arial", sans-serif;
+  --font-mono:    "JetBrains Mono", "IBM Plex Mono", "SF Mono",
+                  ui-monospace, Menlo, monospace;
+
+  /* =====================================================
+     CORE PALETTE — grounded clinical base
+     ===================================================== */
+
+  /* Clinical whites — paper, panel, hairline */
+  --ql-white:       #FFFFFF;          /* pure — primary surface  */
+  --ql-paper:       #F7F7F5;          /* warm off-white page bg  */
+  --ql-bone:        #EEEEEA;          /* subtle panel / input    */
+  --ql-hairline:    #E2E2DE;          /* borders, 1px dividers   */
+
+  /* Deep slate — authority, body, UI chrome */
+  --ql-slate-900:   #0B0F14;          /* near-black, max contrast */
+  --ql-slate-800:   #141A22;          /* primary text / surfaces  */
+  --ql-slate-700:   #1F2731;          /* elevated dark surface    */
+  --ql-slate-600:   #3A424D;          /* muted heading            */
+  --ql-slate-500:   #5B6470;          /* body secondary           */
+  --ql-slate-400:   #8A929C;          /* hint text / placeholders */
+  --ql-slate-300:   #B4BAC1;          /* disabled / dividers      */
+  --ql-slate-200:   #D6DADE;          /* faint lines              */
+
+  /* =====================================================
+     ACCENT — the Quantum Lynx gradient
+     Magenta → Red → Orange. Used for CTAs, data peaks,
+     energy moments. NEVER as background behind body copy.
+     ===================================================== */
+  --ql-magenta:     #B0136A;          /* deep, clinical magenta  */
+  --ql-pink:        #E0256D;          /* mid pink                */
+  --ql-crimson:     #EC3A4F;          /* crimson bridge          */
+  --ql-orange:      #F36A2A;          /* bright orange           */
+  --ql-amber:       #F7A02A;          /* warm highlight          */
+
+  /* Canonical gradient — 3 stops, sharp, not muddy */
+  --ql-gradient:    linear-gradient(
+                      120deg,
+                      var(--ql-magenta) 0%,
+                      var(--ql-crimson) 55%,
+                      var(--ql-orange)  100%
+                    );
+  --ql-gradient-v:  linear-gradient(
+                      180deg,
+                      var(--ql-magenta) 0%,
+                      var(--ql-crimson) 55%,
+                      var(--ql-orange)  100%
+                    );
+
+  /* Single solid pulled from the gradient for compact CTAs */
+  --ql-accent:      var(--ql-crimson);
+  --ql-accent-deep: var(--ql-magenta);
+
+  /* =====================================================
+     SEMANTIC / DATA
+     Kept understated — clinical tools shouldn't alarm
+     unless they mean to.
+     ===================================================== */
+  --ql-ok:          #2B8A6B;          /* compliant / green       */
+  --ql-warn:        #C9882B;          /* watch / amber           */
+  --ql-alert:       #C2272D;          /* alert / true red        */
+  --ql-info:        #2B6BA8;          /* info / cool blue        */
+
+  /* =====================================================
+     SEMANTIC SURFACES (light)
+     ===================================================== */
+  --bg-page:        var(--ql-paper);
+  --bg-surface:     var(--ql-white);
+  --bg-panel:       var(--ql-bone);
+  --bg-inverse:     var(--ql-slate-900);
+
+  --fg-1:           var(--ql-slate-900);   /* primary text     */
+  --fg-2:           var(--ql-slate-600);   /* secondary text   */
+  --fg-3:           var(--ql-slate-400);   /* tertiary / hint  */
+  --fg-inverse:     var(--ql-white);
+  --fg-accent:      var(--ql-accent);
+
+  --border-1:       var(--ql-hairline);
+  --border-2:       var(--ql-slate-200);
+  --border-strong:  var(--ql-slate-900);
+
+  /* =====================================================
+     SPACING — 4px base, disciplined scale
+     ===================================================== */
+  --space-0:   0;
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   24px;
+  --space-6:   32px;
+  --space-7:   48px;
+  --space-8:   64px;
+  --space-9:   96px;
+  --space-10:  128px;
+
+  /* =====================================================
+     RADII — tight, clinical. Never rounder than necessary.
+     ===================================================== */
+  --radius-0:  0;
+  --radius-1:  2px;
+  --radius-2:  4px;
+  --radius-3:  8px;
+  --radius-4:  12px;
+  --radius-pill: 999px;
+
+  /* =====================================================
+     ELEVATION — crisp, low-diffusion shadows.
+     Laboratory vibe: nothing fluffy.
+     ===================================================== */
+  --shadow-0: none;
+  --shadow-1: 0 1px 0 rgba(11,15,20,0.04),
+              0 1px 2px rgba(11,15,20,0.06);
+  --shadow-2: 0 1px 0 rgba(11,15,20,0.04),
+              0 4px 12px -2px rgba(11,15,20,0.08);
+  --shadow-3: 0 2px 0 rgba(11,15,20,0.04),
+              0 12px 32px -8px rgba(11,15,20,0.14);
+  --shadow-inset: inset 0 0 0 1px rgba(11,15,20,0.06);
+
+  /* Accent glow — sparingly, on hover of primary CTAs */
+  --shadow-accent: 0 8px 24px -8px rgba(236,58,79,0.55);
+
+  /* =====================================================
+     MOTION
+     ===================================================== */
+  --ease-standard: cubic-bezier(.2,.7,.2,1);
+  --ease-entrance: cubic-bezier(.16,.84,.44,1);
+  --ease-exit:     cubic-bezier(.4,.0,.8,.2);
+  --dur-fast:   120ms;
+  --dur-base:   200ms;
+  --dur-slow:   360ms;
+
+  /* =====================================================
+     TYPE SCALE — rigorous, tabular-friendly
+     (line-heights embedded in the semantic blocks below)
+     ===================================================== */
+  --fs-eyebrow: 11px;   --ls-eyebrow: .16em;
+  --fs-micro:   12px;
+  --fs-xs:      13px;
+  --fs-sm:      14px;
+  --fs-base:    16px;
+  --fs-md:      18px;
+  --fs-lg:      22px;
+  --fs-xl:      28px;
+  --fs-2xl:     36px;
+  --fs-3xl:     48px;
+  --fs-4xl:     64px;
+  --fs-5xl:     88px;
+  --fs-6xl:     120px;
+}
+
+/* =============================================================
+   SEMANTIC TYPE CLASSES
+   Use these directly; don't hand-size headings.
+   ============================================================= */
+
+.ql-eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--fg-2);
+}
+
+.ql-display {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 8vw, 120px);
+  font-weight: 600;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  color: var(--fg-1);
+}
+
+.ql-h1 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.028em;
+  color: var(--fg-1);
+}
+
+.ql-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.2vw, 48px);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.022em;
+  color: var(--fg-1);
+}
+
+.ql-h3 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.016em;
+  color: var(--fg-1);
+}
+
+.ql-h4 {
+  font-family: var(--font-sans);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.010em;
+  color: var(--fg-1);
+}
+
+.ql-h5 {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.006em;
+  color: var(--fg-1);
+}
+
+.ql-body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  line-height: 1.55;
+  font-weight: 400;
+  color: var(--fg-1);
+  text-wrap: pretty;
+}
+
+.ql-body-lg {
+  font-family: var(--font-sans);
+  font-size: var(--fs-md);
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--fg-1);
+  text-wrap: pretty;
+}
+
+.ql-body-sm {
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--fg-2);
+}
+
+.ql-caption {
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  line-height: 1.4;
+  font-weight: 500;
+  color: var(--fg-2);
+}
+
+.ql-mono {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+  color: var(--fg-1);
+}
+
+.ql-metric {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 8vw, 120px);
+  font-weight: 500;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+  font-variant-numeric: tabular-nums;
+  color: var(--fg-1);
+}
+
+.ql-label {
+  font-family: var(--font-sans);
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+}
+
+/* Gradient accent text — use SPARINGLY (a hero word, a key metric) */
+.ql-accent-text {
+  background: var(--ql-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

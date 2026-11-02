@@ -1,0 +1,18 @@
+{
+  "$comment": "Custom contact properties to create. Standard properties already exist in the portal and were confirmed by a read on 2026-11-01: firstname, lastname, email, phone, company, jobtitle, message, lifecyclestage, hs_lead_status, hs_google_click_id.",
+  "group": { "name": "quantum_lynx_lead", "label": "Quantum Lynx lead" },
+  "properties": [
+    { "name": "ql_lead_channel", "label": "Lead channel", "type": "enumeration", "options": ["form", "readiness", "assistant", "voice"] },
+    { "name": "ql_priority", "label": "Priority", "type": "enumeration", "options": ["survey", "nhsn", "vacant", "crisis", "rebuild", "other"] },
+    { "name": "ql_recommended_service", "label": "Recommended service", "type": "enumeration", "options": ["Infection Control Consulting", "Surveillance Support", "Survey Support", "Crisis Response", "Program Management", "ATP Auditing", "Outside Healthcare"] },
+    { "name": "ql_facility_type", "label": "Facility type", "type": "enumeration", "options": ["physician_owned_hospital", "surgical_center", "ltac", "other"] },
+    { "name": "ql_timeline", "label": "Timeline", "type": "enumeration", "options": ["under_90_days", "under_12_months", "unknown"] },
+    { "name": "ql_readiness_score", "label": "Readiness score", "type": "number" },
+    { "name": "ql_readiness_tier", "label": "Readiness tier", "type": "enumeration", "options": ["ready", "exposed", "at_risk"] },
+    { "name": "ql_top_exposures", "label": "Top exposures", "type": "string", "fieldType": "textarea" },
+    { "name": "ql_lead_score", "label": "Lead score", "type": "number" },
+    { "name": "ql_route", "label": "Route", "type": "enumeration", "options": ["call_now", "call_today", "consult_sequence", "nurture"] },
+    { "name": "ql_ai_brief", "label": "AI call brief", "type": "string", "fieldType": "textarea" },
+    { "name": "ql_landing_page", "label": "Landing page", "type": "string" }
+  ]
+}

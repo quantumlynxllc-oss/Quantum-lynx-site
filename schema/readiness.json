@@ -1,0 +1,19 @@
+{
+  "$comment": "Readiness Check. Option index 0 scores 2, index 1 scores 1, index 2 scores 0. The window question is not scored. It only changes the recommendation.",
+  "maxScore": 12,
+  "tiers": [
+    { "id": "ready", "label": "Survey-ready", "min": 10, "tone": "ok" },
+    { "id": "exposed", "label": "Exposed", "min": 6, "tone": "warn" },
+    { "id": "at_risk", "label": "At risk", "min": 0, "tone": "alert" }
+  ],
+  "questions": [
+    { "id": "plan", "text": "When did you last review your infection control plan and risk assessment?", "options": ["Within 12 months", "Over 12 months ago", "Not sure"], "weak": "Infection control plan review overdue", "service": "Infection Control Consulting" },
+    { "id": "nhsn", "text": "Who owns your NHSN submissions?", "options": ["Named owner with backup", "One person, no backup", "Behind or unclear"], "weak": "NHSN ownership has a single point of failure", "service": "Surveillance Support" },
+    { "id": "audits", "text": "How often do hand hygiene and environmental audits run?", "options": ["Monthly, with trends", "Irregular", "Not running"], "weak": "Audits are not producing trend data", "service": "ATP Auditing" },
+    { "id": "mock", "text": "When was your last mock survey?", "options": ["Within 12 months", "1 to 3 years ago", "Never"], "weak": "No mock survey in the last 12 months", "service": "Survey Support" },
+    { "id": "ip", "text": "What does your Infection Preventionist coverage look like?", "options": ["Dedicated CIC", "Part-time or shared", "Vacant"], "weak": "IP coverage is thin or vacant", "service": "Program Management" },
+    { "id": "drill", "text": "Has your outbreak response plan been tested?", "options": ["Drilled this year", "Written, not drilled", "No plan"], "weak": "Outbreak response plan is untested", "service": "Crisis Response" },
+    { "id": "window", "text": "When does your next survey window open?", "options": ["Over 12 months out", "Within 12 months", "Within 90 days"], "scored": false }
+  ],
+  "disclaimer": "Self-assessment only. Not an accreditation or clinical determination."
+}

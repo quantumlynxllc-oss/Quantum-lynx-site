@@ -1,0 +1,72 @@
+/* Production additions. The supplied design files remain unchanged. */
+html.ql-fonts {
+  --font-display: var(--font-inter-tight), "Helvetica Neue", Arial, sans-serif;
+  --font-sans: var(--font-inter), "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-jetbrains), "SF Mono", ui-monospace, Menlo, monospace;
+}
+.ql-mt16 { margin-top: 16px; }
+.ql-mt20 { margin-top: 20px; }
+.ql-white-text { color: var(--ql-white); }
+.ql-dark-muted { color: var(--ql-slate-300); }
+.ql-muted { color: var(--fg-2); }
+.ql-white-surface { background: var(--ql-white); }
+.ql-bone-surface { background: var(--ql-bone); }
+.ql-panel-line { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.ql-page-title { color: var(--ql-white); margin-top: 16px; max-width: 760px; }
+.ql-page-lede { color: var(--ql-slate-300); margin-top: 20px; max-width: 560px; }
+.ql-hero-surface { background: var(--ql-slate-900); color: var(--ql-white); }
+.ql-hero-eyebrow { color: #F2697B; }
+.ql-dark-divider { border-top-color: rgba(255,255,255,.14); }
+.ql-footer-mark { height: 56px; width: auto; }
+.ql-footer-description { color: var(--ql-slate-300); margin-top: 8px; max-width: 280px; }
+.ql-teaser-copy { color: var(--ql-slate-300); margin-top: 20px; max-width: 480px; }
+.ql-record-caption { color: var(--fg-2); margin-top: 16px; }
+.ql-record-copy { margin: 12px 0 0; max-width: 340px; }
+.ql-principal-copy { margin-top: 20px; color: var(--fg-2); }
+.ql-portrait-wrap { display: flex; justify-content: center; }
+.ql-consult-title { color: var(--ql-white); margin-top: 16px; max-width: 520px; }
+.ql-consult-copy { color: var(--ql-slate-300); margin-top: 24px; max-width: 480px; }
+.ql-confirm-title { margin-top: 12px; }
+.ql-scheduler-placeholder { aspect-ratio: auto; height: 200px; max-width: none; margin-top: 20px; text-align: center; overflow-wrap: anywhere; padding: 12px; }
+.ql-form-notice { margin-top: 12px; }
+.ql-honeypot { position: absolute; left: -9999px; }
+.ql-section-top64 { padding-top: 64px; }
+.ql-service-lede { color: var(--fg-2); margin-top: 16px; max-width: 640px; }
+.ql-service-label { color: var(--fg-2); margin: 0; }
+.ql-readiness-head { margin-bottom: 40px; }
+.ql-readiness-lede { color: var(--fg-2); margin-top: 16px; }
+.qs-q { min-width: 0; }
+.ql-question { border-left: 0; border-right: 0; border-bottom: 0; margin: 0; padding-left: 0; padding-right: 0; }
+.ql-question-legend { float: left; width: 100%; padding: 0; }
+.ql-question-choices { clear: both; }
+.ql-score-number { margin-top: 20px; }
+.ql-score-denominator { font-size: 28px; letter-spacing: -.02em; color: var(--ql-slate-300); }
+.ql-score-exposures { padding: 0; background: none; margin-top: 20px; }
+.ql-score-next { margin-top: 8px; font-size: 15px; color: var(--ql-slate-300); }
+.ql-score-next b { color: var(--ql-white); }
+.ql-summary-sent { margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.14); }
+.ql-summary-title { font: 600 18px/1.3 var(--font-display); }
+.ql-summary-link { margin-top: 16px; }
+.ql-readiness-form { margin-top: 20px; }
+.ql-score-0 { width: 0%; } .ql-score-1 { width: 8%; } .ql-score-2 { width: 17%; }
+.ql-score-3 { width: 25%; } .ql-score-4 { width: 33%; } .ql-score-5 { width: 42%; }
+.ql-score-6 { width: 50%; } .ql-score-7 { width: 58%; } .ql-score-8 { width: 67%; }
+.ql-score-9 { width: 75%; } .ql-score-10 { width: 83%; } .ql-score-11 { width: 92%; } .ql-score-12 { width: 100%; }
+.ql-not-found { max-width: 1240px; margin: 0 auto; padding: 64px 32px; }
+.ql-not-found h1 { margin-bottom: 24px; }
+.ql-skip { position: fixed; top: 8px; left: 8px; z-index: 100; transform: translateY(-200%); background: var(--ql-white); color: var(--fg-1); padding: 14px 22px; border: 2px solid var(--ql-accent); }
+.ql-skip:focus { transform: none; }
+.ql-field-error, .ql-form-error { color: var(--ql-alert); font: 500 13px/1.5 var(--font-sans); margin-top: 6px; }
+.qs-score .ql-field-error, .qs-score .ql-form-error { color: #F29A9D; }
+.ql-form-error { margin-bottom: 12px; }
+.ql-field [aria-invalid="true"] { border-color: var(--ql-alert); }
+.ql-field input:disabled, .ql-field select:disabled { opacity: .7; }
+.ql-btn:disabled { cursor: wait; opacity: .75; transform: none; }
+.ql-turnstile { min-height: 0; }
+.ql-scheduler { width: 100%; min-height: 640px; border: 0; margin-top: 20px; }
+.ql-scheduler-fallback { margin-top: 12px; font-size: 13px; color: var(--fg-2); }
+main:focus { outline: none; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; } }
+.ql-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+/* Owner-approved WCAG AA correction; original design styles stay untouched. */
+.ql-credentials .k { color: var(--fg-accent-light); }
