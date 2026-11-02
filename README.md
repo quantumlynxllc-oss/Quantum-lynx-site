@@ -1,32 +1,58 @@
-# Quantum Lynx Site
+# Quantum Lynx website
 
-This repository contains the source code for the **Quantum Lynx LLC** marketing website. The site presents our infection prevention consulting services tailored for physician‑owned hospitals, including consulting, remote surveillance and data submission, survey support, crisis response, and program management.
+Design, working prototype, and build instructions for the new site. Nothing here is live, and your existing site at https://quantum-lynx-site.vercel.app has not been changed.
 
-## Structure
+## See the demo
 
-- **index.html** – the main landing page with service descriptions, savings metrics, an about section, testimonials, and a contact form powered by Formspree. Google Analytics (GA4) is configured with measurement ID `G‑MVJ882KZ3T`.
-- **privacy.html** – details our privacy policy and HIPAA/BAA commitments.
-- **sla.html** – outlines our Service Level Agreement (SLA).
-- **robots.txt** – instructs search engine crawlers and references the sitemap.
-- **sitemap.xml** – provides a search engine friendly listing of site pages. Update the `<loc>` entries with your final domain after deployment.
-- **assets/QuantumLynx_Capabilities.pdf** – marketing one‑pager PDF for download.
+Design canvas: https://claude.ai/artifact/UWKNczTbQ3QHxNLMnGKnxc
 
-## Deployment
+To run the working prototype on your Mac, use these two commands.
 
-You can deploy this site to any static hosting provider (e.g. Vercel, Netlify, GitHub Pages, AWS S3 + CloudFront). For Vercel:
+```bash
+cd ~/Desktop/" Projects"/Websites/"Quantum Lynx"
+```
 
-1. Fork or clone this repository and push it to your GitHub account.
-2. Sign in to [Vercel](https://vercel.com) and import the repository.
-3. Vercel will detect this as a static project – no build step is required. Simply deploy.
-4. After deployment, update **Formspree** allowed domains to include your new site URL (e.g. `https://quantum‑lynx‑site.vercel.app`).
-5. If you purchase a custom domain (e.g. `www.quantum‑lynx.com`), add it in the Vercel dashboard and update `sitemap.xml` accordingly.
+```bash
+python3 -m http.server 8741
+```
 
-## Updating
+Then open http://localhost:8741/prototype/
 
-To add additional pages or features, create new `.html` files and link them in the navigation. Ensure that any new pages are added to `sitemap.xml` and update `robots.txt` if necessary.
+Try the triage desk, submit the consult form, finish the Readiness Check, and open the lead inbox at http://localhost:8741/prototype/#/inbox to see the record each one creates. Nothing leaves your browser.
 
-If you change the Google Analytics measurement ID or Formspree endpoint, update `index.html` accordingly.
+## Build it
 
-## License
+Open this folder in Claude Code or Codex and paste:
 
-This project is proprietary to Quantum Lynx LLC. Unauthorized copying or distribution of the site content is prohibited.
+> Read AGENTS.md, then build Phase 1. Treat `prototype/` as the behavior reference, `design/reference/` as the visual target, and `schema/` as the data source. Keep the work on Vercel previews, and do not buy or connect a domain.
+
+## What you need to provide
+
+The build can start without these, but the site cannot launch until they are done.
+
+1. A crisis phone number that someone answers, including after hours. The SLA says crisis requests are handled after hours.
+2. A headshot.
+3. The items under "Fix before the build" in `docs/connector-map.md`.
+4. A lawyer's review of the SLA and Privacy pages in `schema/legal.json`.
+5. A domain, once you are happy with the final build. The steps for connecting it are at the end of `docs/seo-schema.md`.
+6. A business email on that domain. A Gmail address is weak for hospital buyers.
+
+## What is in this folder
+
+| Path | What it is |
+|---|---|
+| `AGENTS.md` | Build brief for Codex and Claude Code. `CLAUDE.md` points to it |
+| `prototype/` | Working demo in plain HTML and JS |
+| `schema/` | Services, Readiness Check, legal pages, routes, lead contract, HubSpot fields |
+| `design/` | Tokens and styles, ready to reuse |
+| `design/reference/` | Images of every page at desktop and phone width |
+| `assets/` | Your logo, the vector helix, icons, and the share image |
+| `tools/` | Scripts that rebuild the prototype data and the reference images |
+| `docs/page-spec.md` | What goes on each page, and what not to ship |
+| `docs/handoff-spec.md` | Components, states, responsive rules, accessibility |
+| `docs/integrations.md` | HubSpot, Apollo, scoring, routing, AI, analytics, consent |
+| `docs/seo-schema.md` | Metadata, structured data, and launch SEO |
+| `docs/claims-ledger.md` | Every public claim and its status |
+| `docs/connector-map.md` | Which of your tools fit, and what the check found |
+| `docs/source-site/` | Saved copies of your existing Home, SLA, and Privacy pages |
+| `.env.example` | Keys the build will need |

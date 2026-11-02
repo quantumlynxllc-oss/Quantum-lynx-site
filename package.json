@@ -1,0 +1,35 @@
+{
+  "name": "quantum-lynx-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1 --port 3000",
+    "build": "next build",
+    "start": "next start --hostname 127.0.0.1 --port 3000",
+    "lint": "eslint app components lib tests tools/verify-site.mjs tools/deploy-preview.mjs next.config.ts postcss.config.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --conditions=react-server --test tests/*.test.ts",
+    "verify": "node tools/verify-site.mjs"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "next": "16.4.4",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "server-only": "^0.0.1"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.11.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "16.4.4",
+    "lighthouse": "^13.0.0",
+    "playwright": "^1.58.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.0"
+  },
+  "engines": { "node": ">=22" }
+}

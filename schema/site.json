@@ -1,0 +1,38 @@
+{
+  "$comment": "Route map. Phase 1 is launch. Phase 2 adds AI intake. Phase 3 adds content and paid landing pages.",
+  "domain": null,
+  "currentUrl": "https://quantum-lynx-site.vercel.app",
+  "domainNote": "The owner has not bought a domain yet. Build every absolute URL from NEXT_PUBLIC_SITE_URL.",
+  "routes": [
+    { "path": "/", "page": "Home", "phase": 1, "primaryAction": "Triage desk to consult", "title": "Infection Control Consulting for Physician-Owned Hospitals | Quantum Lynx", "description": "Remote surveillance, survey support, and crisis response for physician-owned hospitals and surgical centers, led by a CIC." },
+    { "path": "/services", "page": "Service lines", "phase": 1, "primaryAction": "Open a service", "title": "Infection Control Services | Quantum Lynx", "description": "Consulting, surveillance, survey support, crisis response, program management, ATP auditing, and guidance outside healthcare." },
+    { "path": "/services/[slug]", "page": "Service page", "phase": 1, "primaryAction": "Consult, prefilled with the service priority", "source": "schema/services.json", "title": "{title} | Quantum Lynx", "description": "Use the service's lede." },
+    { "path": "/readiness-check", "page": "Readiness Check", "phase": 1, "primaryAction": "Email my summary", "title": "Infection Control Readiness Check | Quantum Lynx", "description": "Seven questions. Get a readiness score and your top three exposures in about 3 minutes.", "source": "schema/readiness.json" },
+    { "path": "/consult", "page": "Consult form and scheduler", "phase": 1, "primaryAction": "Book 20 minutes", "title": "Schedule a 20-Minute Consult | Quantum Lynx", "description": "Get a review of your infection prevention program and your top three exposures." },
+    { "path": "/about", "page": "Principal and field record", "phase": 1, "primaryAction": "Consult", "title": "About Quantum Lynx | Infection Control Solutions", "description": "Led by Travaughn Baker-Johnson, CIC. Serving hospitals since 2016." },
+    { "path": "/privacy", "page": "Privacy and HIPAA/BAA", "phase": 1, "primaryAction": "None", "source": "schema/legal.json", "title": "Privacy and HIPAA/BAA | Quantum Lynx", "description": "How Quantum Lynx collects, uses, and protects information." },
+    { "path": "/sla", "page": "Service Level Agreement", "phase": 1, "primaryAction": "None", "source": "schema/legal.json", "title": "Service Level Agreement | Quantum Lynx", "description": "What you can expect from Quantum Lynx, and what we need from you." },
+    { "path": "/api/lead", "page": "Lead intake endpoint", "phase": 1, "contract": "schema/lead.schema.json" },
+    { "path": "/api/assistant", "page": "Intake assistant endpoint", "phase": 2 },
+    { "path": "/insights", "page": "Article index", "phase": 3 },
+    { "path": "/insights/[slug]", "page": "Cited article", "phase": 3, "primaryAction": "Readiness Check" },
+    { "path": "/for/[audience]", "page": "Audience and ad landing pages", "phase": 3, "primaryAction": "Consult" }
+  ],
+  "redirects": [
+    { "from": "/privacy.html", "to": "/privacy", "status": 301 },
+    { "from": "/sla.html", "to": "/sla", "status": 301 }
+  ],
+  "keep": {
+    "ga4": "G-MVJ882KZ3T",
+    "hubspotPortal": "245964573",
+    "linkedin": "https://www.linkedin.com/company/quantum-lynx-llc/",
+    "formspreeFailover": "https://formspree.io/f/mdkdbogr",
+    "capabilitiesPdf": "Optional. The existing site has assets/QuantumLynx_Capabilities.pdf. No page in this design links to it."
+  },
+  "share": {
+    "image": "assets/og-default.png",
+    "imageAlt": "Quantum Lynx. Infection control that holds up under survey.",
+    "logoPng": "assets/ql-helix-512.png",
+    "appleTouchIcon": "assets/apple-touch-icon.png"
+  }
+}

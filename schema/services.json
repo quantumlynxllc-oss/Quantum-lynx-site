@@ -1,0 +1,131 @@
+{
+  "$comment": "Source of truth for service copy. Render pages from this file. Do not fork the copy into components.",
+  "services": [
+    {
+      "n": "01",
+      "slug": "infection-control-consulting",
+      "title": "Infection Control Consulting",
+      "delivery": ["Remote", "On-site"],
+      "ledger": "Program gaps, new leadership, or a plan that needs rebuilding",
+      "lede": "Remote or on-site program development by CIC-certified Infection Preventionists.",
+      "when": ["Your program is new or inherited", "A survey left findings to close", "Leadership wants an outside review"],
+      "get": ["Infection Control Plan document", "Policies built to regulatory standards, tailored to your facility", "Custom Environment of Care rounding tools", "Construction and renovation guidance"],
+      "cta": "Scope the program",
+      "priority": "rebuild"
+    },
+    {
+      "n": "02",
+      "slug": "surveillance-support",
+      "title": "Surveillance Support",
+      "delivery": ["Remote"],
+      "ledger": "HAI surveillance and NHSN submission have fallen behind",
+      "lede": "Remote HAI surveillance and NHSN data submission, so your IP gets back on the floor.",
+      "when": ["NHSN submission has fallen behind", "Your IP is stuck at a desk", "State notifiable conditions need validation"],
+      "get": ["HAI surveillance", "NHSN data and case validation", "State notifiable condition oversight"],
+      "cta": "Clear the backlog",
+      "priority": "nhsn"
+    },
+    {
+      "n": "03",
+      "slug": "survey-support",
+      "title": "Survey Support",
+      "delivery": ["Remote", "On-site"],
+      "ledger": "A CMS, state, or accreditation survey is on the calendar",
+      "lede": "Survey readiness and on-survey support for CMS, state, Joint Commission, DNV, and CIHQ.",
+      "when": ["A survey window is open", "Past findings are still open", "You need a dry run before surveyors arrive"],
+      "get": ["Mock survey against your accreditor standards", "Gap list and corrective action plan", "Plan of correction support", "Support during the survey"],
+      "cta": "Request survey support",
+      "priority": "survey"
+    },
+    {
+      "n": "04",
+      "slug": "crisis-response",
+      "title": "Crisis Response",
+      "delivery": ["Rapid", "Priority response"],
+      "ledger": "Outbreak, disaster, or CMS Immediate Jeopardy",
+      "lede": "Rapid consult for outbreaks, disasters, and CMS Immediate Jeopardy.",
+      "when": ["An outbreak is suspected or confirmed", "A disaster has hit your facility", "CMS has cited Immediate Jeopardy"],
+      "get": ["Rapid consult", "Outbreak investigation", "Remediation and reconstruction guidance", "Plan of correction support"],
+      "cta": "Request crisis response",
+      "priority": "crisis"
+    },
+    {
+      "n": "05",
+      "slug": "program-management",
+      "title": "Program Management",
+      "delivery": ["On-site", "Hybrid"],
+      "ledger": "The IP role is vacant, or you want the program run for you",
+      "lede": "Long-term on-site or hybrid infection prevention staffing and leadership.",
+      "when": ["The IP role is vacant", "Your IP coverage is part-time", "You want the program run for you"],
+      "get": ["Named Infection Preventionist", "Program run to your core values", "Infection Control Committee reporting"],
+      "cta": "Cover the role",
+      "priority": "vacant"
+    },
+    {
+      "n": "06",
+      "slug": "atp-auditing",
+      "title": "ATP Auditing",
+      "delivery": ["On-site"],
+      "ledger": "You need numbers behind environmental cleaning",
+      "lede": "Environmental hygiene verification with quantitative benchmarks.",
+      "when": ["You need numbers behind cleaning", "An HAI cluster raises questions", "You want to validate an EVS vendor"],
+      "get": ["ATP testing of high-touch surfaces", "Benchmarked results by area", "Re-audit of failed areas"],
+      "cta": "Book an audit",
+      "priority": "other"
+    },
+    {
+      "n": "07",
+      "slug": "outside-healthcare",
+      "title": "Outside Healthcare",
+      "delivery": ["Remote", "On-site"],
+      "ledger": "A non-clinical business needs infection prevention guidance",
+      "lede": "Infection prevention guidance for businesses outside healthcare.",
+      "when": ["You run a non-clinical operation", "Staff need cleaning and disinfection training", "Your policies need a best-practice review"],
+      "get": ["Cleaning and disinfection training", "Policy review and revision", "Day-to-day operations guidance"],
+      "cta": "Talk it through",
+      "priority": "other"
+    }
+  ],
+  "triage": [
+    { "id": "survey", "label": "A survey window is open", "service": "Survey Support", "response": "1 business day", "first": "Mock survey, gap list, and a corrective action plan.", "cta": "Request survey support" },
+    { "id": "nhsn", "label": "NHSN reporting is behind", "service": "Surveillance Support", "response": "1 business day", "first": "Backlog review, case validation, and a submission calendar.", "cta": "Clear the backlog" },
+    { "id": "vacant", "label": "The IP role is vacant", "service": "Program Management", "response": "1 business day", "first": "Interim coverage, then an on-site or hybrid staffing plan.", "cta": "Cover the role" },
+    { "id": "crisis", "label": "Outbreak or Immediate Jeopardy", "service": "Crisis Response", "response": "Priority response", "first": "Rapid consult, containment steps, and a plan of correction.", "cta": "Request crisis response" },
+    { "id": "rebuild", "label": "The program needs a rebuild", "service": "Infection Control Consulting", "response": "1 business day", "first": "Risk assessment, infection control plan, and policy review.", "cta": "Scope the rebuild" }
+  ],
+  "proof": [
+    { "value": "30%", "label": "Less survey prep time" },
+    { "value": "20%", "label": "Staffing cost savings" },
+    { "value": "1 day", "label": "Reply within 1 business day" },
+    { "value": "2016", "label": "Serving hospitals since" }
+  ],
+  "proofNote": "Survey prep starts from policies built to regulatory standards, ready to tailor to your facility.",
+  "steps": [
+    { "n": "01", "title": "Consult", "text": "20 minutes. Review your program and flag your top three exposures." },
+    { "n": "02", "title": "Scope", "text": "Defined scope and a named CIC. BAA signed before any PHI changes hands." },
+    { "n": "03", "title": "Run", "text": "Surveillance, audits, and policy work on an agreed cadence." },
+    { "n": "04", "title": "Prove", "text": "Reporting and records you can hand a surveyor." }
+  ],
+  "record": [
+    { "title": "Disaster recovery", "text": "Construction, renovation, and remediation of a long-term acute care facility damaged by Hurricane Harvey." },
+    { "title": "Outbreak investigation", "text": "C. diff, E. coli, MRSA, and TB across inpatient units in Greater Houston." },
+    { "title": "Survey response", "text": "State Health Department, CMS, Joint Commission, and DNV." },
+    { "title": "Program oversight", "text": "Infection control programs for multiple hospitals in Greater Houston." }
+  ],
+  "quotes": [
+    { "text": "Quantum Lynx has helped guide us through process improvements that needed to be enacted, and through their expertise we were able to meet all guidelines of our accrediting body.", "role": "CEO", "org": "The Woodlands Specialty Hospital" },
+    { "text": "Provided excellent consulting services to help us get through our Joint Commission survey.", "role": "CNO", "org": "Nexus Health Systems" },
+    { "text": "Provided top-notch consultation which helped us through remediation of our hospital after Hurricane Harvey.", "role": "CQO", "org": "Health South Vintage" },
+    { "text": "Very knowledgeable when it comes to infection control regulations and policies. Quantum Lynx provided valuable insights that allowed us to improve our infection control processes.", "role": "CNO", "org": "Emergency Hospital Systems LLC" }
+  ],
+  "principal": {
+    "name": "Travaughn Baker-Johnson, CIC",
+    "title": "CEO and Principal Infection Preventionist",
+    "credentials": [
+      { "k": "CIC", "v": "CBIC board certified" },
+      { "k": "APIC", "v": "Active membership" },
+      { "k": "Lab", "v": "LabCorp and MD Anderson Cancer Center" },
+      { "k": "Base", "v": "Houston-based, serving clients nationwide" }
+    ]
+  }
+}

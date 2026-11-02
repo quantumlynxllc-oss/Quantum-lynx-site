@@ -1,0 +1,140 @@
+{
+  "$comment": "Source of truth for /sla and /privacy. Render both with the LegalPage template in docs/page-spec.md. Hide any section with \"phase\": 2 until Phase 2 ships. Replace [BRACKETED] placeholders before launch. The existing site's wording is saved in docs/source-site/.",
+  "sla": {
+    "eyebrow": "Legal",
+    "title": "Service Level Agreement",
+    "lede": "What you can expect from Quantum Lynx, and what we need from you.",
+    "updated": "November 2, 2026",
+    "sections": [
+      {
+        "heading": "Scope",
+        "paragraphs": [
+          "We provide the infection prevention services described on this site and agreed in your contract. These include consulting, surveillance support, survey support, crisis response, program management, ATP auditing, and guidance outside healthcare.",
+          "If this page and your signed contract differ, your contract controls."
+        ]
+      },
+      {
+        "heading": "Response times",
+        "table": {
+          "columns": ["Request", "What to expect"],
+          "rows": [
+            ["Standard request", "Reply within 1 business day"],
+            ["Request sent after hours", "Reply on the next business day"],
+            ["Crisis request: outbreak, disaster, or CMS Immediate Jeopardy", "Priority response. Call [CRISIS LINE]"]
+          ]
+        },
+        "paragraphs": [
+          "Crisis requests go ahead of all other work, including after hours. We respond as quickly as we can. Timing depends on when the request arrives and what the situation requires."
+        ]
+      },
+      {
+        "heading": "Our commitments",
+        "items": [
+          "One named CIC is accountable for your engagement.",
+          "We sign a BAA before any PHI changes hands.",
+          "We treat your information as confidential, as described below."
+        ]
+      },
+      {
+        "heading": "What we need from you",
+        "items": [
+          "Accurate and timely information needed to perform the agreed services.",
+          "Staff who are available to work with our consultants."
+        ]
+      },
+      {
+        "heading": "Confidentiality",
+        "paragraphs": [
+          "We treat all client information as confidential and use it only to deliver the agreed services. This obligation continues after services end."
+        ]
+      },
+      {
+        "heading": "Survey and inspection outcomes",
+        "paragraphs": [
+          "We help you prepare for and respond to surveys and inspections. We do not guarantee the result of any survey, inspection, or accreditation decision. Those decisions belong to the surveying body."
+        ]
+      },
+      {
+        "heading": "Questions and changes",
+        "paragraphs": [
+          "Email [BUSINESS EMAIL] with any questions about this agreement. We may update this page. The date at the top shows the latest version."
+        ]
+      }
+    ]
+  },
+  "privacy": {
+    "eyebrow": "Legal",
+    "title": "Privacy and HIPAA/BAA",
+    "lede": "How Quantum Lynx collects, uses, and protects information.",
+    "updated": "November 2, 2026",
+    "sections": [
+      {
+        "heading": "Our commitment",
+        "paragraphs": [
+          "Quantum Lynx LLC is committed to protecting the privacy of our clients and their patients. We follow applicable HIPAA regulations and provide Business Associate Agreements (BAAs) as required."
+        ]
+      },
+      {
+        "heading": "Do not send patient information",
+        "paragraphs": [
+          "This site is not for PHI. Do not enter patient names, dates of birth, medical record numbers, or other patient details in any form. If an engagement requires PHI, we sign a BAA first and agree on a secure way to exchange it."
+        ]
+      },
+      {
+        "heading": "What we collect",
+        "items": [
+          "Details you give us: your name, work email, facility, role, and the priority you select.",
+          "Readiness Check results, if you choose to send them: your score, tier, and top exposures.",
+          "Website activity, if you accept cookies: pages viewed, the site or campaign that referred you, and basic device and browser details."
+        ]
+      },
+      {
+        "heading": "How we use it",
+        "items": [
+          "To reply to you, prepare for a consult, and send the summary you requested.",
+          "To follow up about services that fit your request.",
+          "To measure and improve this site."
+        ]
+      },
+      {
+        "heading": "Who processes it",
+        "paragraphs": [
+          "We do not sell your information. We do not share it with third parties except as required by law or as necessary to deliver our services. These providers help us run this site and respond to you:"
+        ],
+        "items": [
+          "HubSpot, to manage contacts, forms, and scheduling.",
+          "Apollo, to add public company details based on your work email domain and, if you accept cookies, to understand company visits.",
+          "Google Analytics, to measure site use if you accept cookies.",
+          "Cloudflare Turnstile, to block automated form submissions.",
+          "Vercel, to host this site.",
+          "Formspree, as a backup so your request still reaches us if our main system is down."
+        ]
+      },
+      {
+        "heading": "Cookies and your choices",
+        "paragraphs": [
+          "Analytics and marketing tools load only after you select Accept. If you select Decline, the site and its forms still work. You can change your choice at any time with the Cookie settings link in the footer."
+        ]
+      },
+      {
+        "heading": "Automated tools",
+        "phase": 2,
+        "paragraphs": [
+          "Our intake assistant is automated and labeled that way. It does not give clinical, legal, or regulatory advice. We use Anthropic's Claude API to run it and to prepare call notes from the details you submit. We keep the details you submit, not the conversation transcript."
+        ]
+      },
+      {
+        "heading": "How we protect it",
+        "paragraphs": [
+          "All data transmitted through this site is encrypted using industry-standard protocols. We use administrative, technical, and physical safeguards to protect your data from unauthorized access or disclosure."
+        ]
+      },
+      {
+        "heading": "Questions and requests",
+        "paragraphs": [
+          "Email [BUSINESS EMAIL] to ask about our privacy practices, request a copy of our standard BAA, or ask us to correct or delete your information. We may update this page. The date at the top shows the latest version."
+        ]
+      }
+    ]
+  }
+}
