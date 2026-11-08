@@ -6,10 +6,10 @@ The owner purchased `quantumlynx.io` at Namecheap and requested Zoho CRM instead
 
 - Added `quantumlynx.io` to the existing Vercel project. Vercel reports ownership verified.
 - Added `www.quantumlynx.io` with a permanent 308 redirect to `quantumlynx.io`.
-- Set `NEXT_PUBLIC_SITE_URL=https://quantumlynx.io` for production and the migration preview. The next production build will use it for metadata and the sitemap.
+- Set `NEXT_PUBLIC_SITE_URL=https://quantumlynx.io` for production and the migration preview. The production build uses it for metadata and the sitemap.
 - Updated Namecheap: two apex A records (`216.198.79.1`, `64.29.17.1`) and the `www` CNAME (`b8cb04870f3c473e.vercel-dns-017.com`). Kept BasicDNS nameservers, the original SPF TXT record, and all five forwarding MX records. Public DNS checks passed.
 - Added both hostnames to the existing Turnstile widget while keeping the old Vercel hostname allowed.
-- Issued an automatically renewing certificate for both names. Verified HTTPS 200 on the apex and HTTPS 308 to the apex from `www` using Vercel's current addresses. Some local DNS caches may take longer to update.
+- Issued an automatically renewing certificate for both names. Verified HTTPS 200 on the apex and HTTPS 308 to the apex from `www` using Vercel's current addresses. The owner subsequently confirmed that the website opens normally.
 - After explicit owner approval, created a website-only Zoho OAuth self client for the Quantum Lynx production organization. Client ID, secret and refresh token are sensitive Vercel production/preview variables. The exchange used a temporary loopback-only helper and process memory; no credentials were saved to disk.
 - Cleared the retired HubSpot portal environment setting. No new Zoho marketing tracker was installed.
 - Confirmed Zoho connector access by creating a synthetic Lead, attaching a note, and creating and reading a completed test task linked to that Lead. Test Lead ID: `7668958000000706001`; note ID: `7668958000000707001`; completed task ID: `7668958000000708001`. Test email is `website-integration-test@example.org`. No email campaign or notification was sent through the connector.
@@ -19,7 +19,7 @@ The owner purchased `quantumlynx.io` at Namecheap and requested Zoho CRM instead
 
 `lib/server/zoho.ts` replaces the HubSpot integration. It refreshes server-only OAuth tokens, matches exact primary email, upserts new Leads, appends intake notes, and creates linked follow-up tasks. An API response is accepted only when the individual record reports success. A failed primary delivery falls back to Formspree before the visitor sees success. Existing owner, lead status, description, and email preferences are not reset. Email-only readiness submissions preserve known names. Standard CRM field length limits are respected; notes keep the original submitted values.
 
-The HubSpot tracking script and cookie collection are removed. GA4 and optional Apollo remain consent-gated. Privacy now identifies Zoho CRM. The scheduler uses optional `NEXT_PUBLIC_ZOHO_BOOKINGS_URL`; `[ZOHO BOOKINGS SCHEDULER]` remains visible until a link is supplied. `[HEADSHOT]`, `[CRISIS LINE]`, and `[BUSINESS EMAIL]` remain unchanged. Historical HubSpot data has not been migrated.
+The HubSpot tracking script and cookie collection are removed. GA4 and optional Apollo remain consent-gated. Privacy identifies Zoho CRM, Zoho Bookings, Google Calendar, and Google Meet. The scheduler uses `NEXT_PUBLIC_ZOHO_BOOKINGS_URL`, configured with the verified Zoho inline booking URL. `[HEADSHOT]`, `[CRISIS LINE]`, and `[BUSINESS EMAIL]` remain unchanged. Historical HubSpot data has not been migrated.
 
 ## Delivery verification and release
 
@@ -35,7 +35,7 @@ Production release and public-domain form checks follow these preview checks. Ex
 
 ## Remaining owner configuration
 
-- Supply the actual Zoho Bookings URL to replace `[ZOHO BOOKINGS SCHEDULER]`. No scheduler was invented or paid service purchased.
+- Zoho Bookings started a 15-day trial during onboarding. No paid subscription or upgrade was purchased. The configured one-user, one-event, one-calendar and online-meeting setup fits the published Free plan limits; review the account after the trial.
 - `[HEADSHOT]`, `[CRISIS LINE]`, and `[BUSINESS EMAIL]` remain visible until supplied.
 - Requested readiness-summary emails and marketing follow-up still require manual response or an owner-configured automation. Capturing the result in Zoho does not configure outbound summary mail or subscribe a visitor to a newsletter.
 - Update the GA4 web stream URL and Google Search Console property/sitemap for the new domain. Existing GA4 measurement is retained and consent-gated.
@@ -59,3 +59,12 @@ For future deployment administration, install the Vercel CLI with `npm i -g verc
 - [Zoho notes](https://www.zoho.com/crm/developer/docs/api/v8/create-notes.html)
 - [Zoho records and tasks](https://www.zoho.com/crm/developer/docs/api/v8/insert-records.html)
 - [Zoho booking URLs](https://help.zoho.com/portal/en/kb/bookings/general-setup/articles/bookings-booking-page-url)
+
+## Consultation scheduling
+
+The owner selected Wednesday, Thursday, and Friday, 10 a.m.–2 p.m. in `America/Chicago`, with 20-minute consultations. The saved weekly schedule disables Monday, Tuesday, Saturday, and Sunday. The public booking page verifies these days and the Central timezone. Google Calendar `quantumlynxllc@gmail.com` is connected both to check conflicts and to receive appointments. Google Meet is connected and selected as the event meeting mode. The contact-number field is optional. The event description and booking-input view display the no-PHI notice. No free-text clinical intake field was added.
+
+- Public booking URL: https://quantumlynxllc.zohobookings.com/4935751000000039045
+- Inline URL: https://quantumlynxllc.zohobookings.com/portal-embed#/4935751000000039045
+- Event ID: `4935751000000039045`
+- The website captures the CRM lead before showing the scheduler. Native Bookings-to-CRM synchronization is not enabled; the verified website intake remains the CRM path.
