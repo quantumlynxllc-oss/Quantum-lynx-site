@@ -23,8 +23,6 @@ function attribution(): Attribution {
     const v = query.get(key); if (v && !containsPatientDetails(v)) out[key] = v.slice(0, key === 'gclid' ? 200 : 120);
   }
   try { if (document.referrer) out.referrer = new URL(document.referrer).origin.slice(0, 300); } catch { /* Invalid referrer omitted. */ }
-  const cookie = document.cookie.split('; ').find(c => c.startsWith('hubspotutk='))?.split('=')[1];
-  if (cookie && /^[a-f0-9]{32}$/i.test(cookie)) out.hutk = cookie;
   return out;
 }
 export function LeadForm({ fields, payload, label, heading, select, onSuccess, siteKey }: {
@@ -67,7 +65,7 @@ export function LeadForm({ fields, payload, label, heading, select, onSuccess, s
     finally { setSending(false); }
   }
   const id = payload.channel === 'form' ? 'consult-form' : 'readiness-form';
-  return <form ref={form} className={`hs-skip ${payload.channel === 'form' ? 'ql-cta-form' : 'ql-readiness-form'}`} id={id} onSubmit={submit} noValidate aria-busy={sending}>
+  return <form ref={form} className={`${payload.channel === 'form' ? 'ql-cta-form' : 'ql-readiness-form'}`} id={id} onSubmit={submit} noValidate aria-busy={sending}>
     {heading && <div className="ql-eyebrow">{heading}</div>}
     {fields.map(field => <div className="ql-field" key={field.name}><label htmlFor={field.id}>{field.label}</label><input id={field.id} name={field.name} type={field.name === 'email' ? 'email' : 'text'} autoComplete={field.autocomplete} required maxLength={field.maxLength} disabled={sending} aria-invalid={!!errors[field.name]} aria-describedby={`${field.id}-notice${errors[field.name] ? ` ${field.id}-error` : ''}`} /><span className="ql-sr-only" id={`${field.id}-notice`}>Do not include patient information.</span>{errors[field.name] && <p className="ql-field-error" id={`${field.id}-error`}>{errors[field.name]}</p>}</div>)}
     {select && <div className="ql-field"><label htmlFor="f-pri">Priority</label><select id="f-pri" name="priority" required value={select.value} disabled={sending} onChange={event => select.onChange(event.target.value)} aria-invalid={!!errors.priority} aria-describedby={errors.priority ? 'f-pri-error' : undefined}>{select.options.map(o => <option key={o.id} value={o.id}>{o.label}</option>)}</select>{errors.priority && <p className="ql-field-error" id="f-pri-error">{errors.priority}</p>}</div>}

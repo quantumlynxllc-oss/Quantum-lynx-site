@@ -35,8 +35,7 @@
         "utm_source": { "type": "string", "maxLength": 120 },
         "utm_medium": { "type": "string", "maxLength": 120 },
         "utm_campaign": { "type": "string", "maxLength": 120 },
-        "gclid": { "type": "string", "maxLength": 200 },
-        "hutk": { "type": "string", "maxLength": 64 }
+        "gclid": { "type": "string", "maxLength": 200 }
       }
     },
     "consent_version": { "type": "string", "maxLength": 20 },

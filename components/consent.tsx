@@ -19,7 +19,7 @@ export function consentSnapshot(): Consent {
 const Context = createContext({ open: () => {} });
 export function CookieSettings() { const { open } = useContext(Context); return <button className="qs-linkbtn" type="button" onClick={open}>Cookie settings</button>; }
 
-type TrackingWindow = Window & { dataLayer?: unknown[]; gtag?: (...args: unknown[]) => void; _hsq?: unknown[][]; trackingFunctions?: { onLoad: (options: { appId: string }) => void } };
+type TrackingWindow = Window & { dataLayer?: unknown[]; gtag?: (...args: unknown[]) => void; trackingFunctions?: { onLoad: (options: { appId: string }) => void } };
 export function trackEvent(name: 'triage_select' | 'readiness_complete' | 'generate_lead', parameters: Record<string, string>) {
   if (consentSnapshot() !== 'accepted') return;
   (window as TrackingWindow).gtag?.('event', name, parameters);
@@ -48,12 +48,6 @@ function Trackers({ consent }: { consent: Consent }) {
       w.gtag('config', ga, { send_page_view: false, page_location: `${location.origin}${path}`, page_referrer: '', ignore_referrer: true, allow_google_signals: false, allow_ad_personalization_signals: false });
       add('ql-ga4', `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(ga)}`);
     }
-    const portal = process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID;
-    if (portal && /^\d+$/.test(portal)) {
-      w._hsq = w._hsq || [];
-      w._hsq.push(['setPath', path]);
-      add('hs-script-loader', `https://js.hs-scripts.com/${portal}.js`);
-    }
     const apollo = process.env.NEXT_PUBLIC_APOLLO_TRACKER_ID;
     if (apollo && /^[a-zA-Z0-9_-]+$/.test(apollo)) {
       const script = add('ql-apollo', 'https://assets.apollo.io/micro/website-tracker/tracker.iife.js');
@@ -68,7 +62,6 @@ function Trackers({ consent }: { consent: Consent }) {
     const w = window as TrackingWindow;
     // Never pass the query string, form content, contact details, or referrer.
     w.gtag?.('event', 'page_view', { page_location: `${location.origin}${path}`, page_referrer: '', page_title: document.title });
-    w._hsq?.push(['setPath', path]); w._hsq?.push(['trackPageView']);
   }, [consent, path]);
   return null;
 }

@@ -1,7 +1,7 @@
 import 'server-only';
 import { site } from '@/lib/content';
 import type { Lead } from '@/lib/lead';
-import { leadProperties } from '@/lib/server/hubspot';
+import { leadProperties } from '@/lib/server/lead-context';
 export async function failover(lead: Lead, reason: string) {
   const endpoint = process.env.FORMSPREE_FAILOVER_URL || site.keep.formspreeFailover;
   const url = new URL(endpoint);

@@ -57,11 +57,11 @@ test('scoring boundaries and crisis override match the integration contract', ()
   assert.equal(companyDomain('reader@proton.me'), undefined); assert.equal(companyDomain('reader@facility.org'), 'facility.org');
 });
 
-test('HubSpot failure delivers backup before success and never stores anti-abuse tokens', async () => {
+test('Zoho failure delivers backup before success and never stores anti-abuse tokens', async () => {
   const calls: string[] = [];
-  const deps = { ...integrations, capture: async () => { calls.push('hubspot'); throw new Error('forced'); }, backup: async (payload: Lead) => { calls.push('backup'); assert.equal(payload.turnstile_token, undefined); assert.equal(payload.website, undefined); assert.equal(payload.email, lead.email); }, alert: async () => { calls.push('alert'); } };
+  const deps = { ...integrations, capture: async () => { calls.push('zoho'); throw new Error('forced'); }, backup: async (payload: Lead) => { calls.push('backup'); assert.equal(payload.turnstile_token, undefined); assert.equal(payload.website, undefined); assert.equal(payload.email, lead.email); }, alert: async () => { calls.push('alert'); } };
   const result = await deliverLead(lead, deps);
-  assert.equal(result.destination, 'failover'); assert.deepEqual(calls, ['hubspot', 'backup', 'alert']);
+  assert.equal(result.destination, 'failover'); assert.deepEqual(calls, ['zoho', 'backup', 'alert']);
   await assert.rejects(deliverLead(lead, { ...deps, backup: async () => { throw new Error('both destinations down'); } }));
 });
 

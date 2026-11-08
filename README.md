@@ -1,6 +1,6 @@
 # Quantum Lynx website
 
-Design, working prototype, and build instructions for the new site. Nothing here is live, and your existing site at https://quantum-lynx-site.vercel.app has not been changed.
+Production source for Quantum Lynx. The primary domain is https://quantumlynx.io; the existing https://quantum-lynx-site.vercel.app address remains available. The November 8 domain and Zoho migration is described in `docs/domain-crm-migration.md`.
 
 ## See the demo
 
@@ -43,14 +43,14 @@ The build can start without these, but the site cannot launch until they are don
 |---|---|
 | `AGENTS.md` | Build brief for Codex and Claude Code. `CLAUDE.md` points to it |
 | `prototype/` | Working demo in plain HTML and JS |
-| `schema/` | Services, Readiness Check, legal pages, routes, lead contract, HubSpot fields |
+| `schema/` | Services, Readiness Check, legal pages, routes, lead contract, historical CRM field reference |
 | `design/` | Tokens and styles, ready to reuse |
 | `design/reference/` | Images of every page at desktop and phone width |
 | `assets/` | Your logo, the vector helix, icons, and the share image |
 | `tools/` | Scripts that rebuild the prototype data and the reference images |
 | `docs/page-spec.md` | What goes on each page, and what not to ship |
 | `docs/handoff-spec.md` | Components, states, responsive rules, accessibility |
-| `docs/integrations.md` | HubSpot, Apollo, scoring, routing, AI, analytics, consent |
+| `docs/integrations.md` | Zoho, Apollo, scoring, routing, AI, analytics, consent |
 | `docs/seo-schema.md` | Metadata, structured data, and launch SEO |
 | `docs/claims-ledger.md` | Every public claim and its status |
 | `docs/connector-map.md` | Which of your tools fit, and what the check found |

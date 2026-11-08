@@ -1,3 +1,5 @@
+> November 8, 2026: Zoho CRM replaces HubSpot. Leads and notes were verified through the connector; a task linked with `What_Id` and `$se_module: Leads` was accepted. Custom-field creation is blocked by the account limit. Website OAuth, Namecheap DNS and Turnstile configuration remain pending browser access. See `docs/domain-crm-migration.md`. The account inventory below is historical.
+
 # Connector map
 
 Read-only check of your accounts on November 1, 2026. Travel, food, trading, and shopping connectors have no role and are left out.

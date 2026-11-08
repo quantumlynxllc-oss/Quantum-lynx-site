@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
   if (!await verifyTurnstile(lead.turnstile_token, ip, host.split(':')[0])) return reply(400, 'verification_failed');
   try {
     const delivered = await deliverLead(lead);
-    if (delivered.destination === 'hubspot') after(async () => {
+    if (delivered.destination === 'zoho') after(async () => {
       try { await finishLead(delivered.lead, delivered.contactId); }
       catch { console.error('lead_background_delivery_failed'); }
     });

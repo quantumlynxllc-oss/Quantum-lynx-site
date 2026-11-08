@@ -1,8 +1,8 @@
 {
   "$comment": "Route map. Phase 1 is launch. Phase 2 adds AI intake. Phase 3 adds content and paid landing pages.",
-  "domain": null,
-  "currentUrl": "https://quantum-lynx-site.vercel.app",
-  "domainNote": "The owner has not bought a domain yet. Build every absolute URL from NEXT_PUBLIC_SITE_URL.",
+  "domain": "quantumlynx.io",
+  "currentUrl": "https://quantumlynx.io",
+  "domainNote": "The owner purchased quantumlynx.io at Namecheap. Build every absolute URL from NEXT_PUBLIC_SITE_URL. Keep the existing Vercel address available during DNS cutover.",
   "routes": [
     { "path": "/", "page": "Home", "phase": 1, "primaryAction": "Triage desk to consult", "title": "Infection Control Consulting for Physician-Owned Hospitals | Quantum Lynx", "description": "Remote surveillance, survey support, and crisis response for physician-owned hospitals and surgical centers, led by a CIC." },
     { "path": "/services", "page": "Service lines", "phase": 1, "primaryAction": "Open a service", "title": "Infection Control Services | Quantum Lynx", "description": "Consulting, surveillance, survey support, crisis response, program management, ATP auditing, and guidance outside healthcare." },
@@ -24,7 +24,6 @@
   ],
   "keep": {
     "ga4": "G-MVJ882KZ3T",
-    "hubspotPortal": "245964573",
     "linkedin": "https://www.linkedin.com/company/quantum-lynx-llc/",
     "formspreeFailover": "https://formspree.io/f/mdkdbogr",
     "capabilitiesPdf": "Optional. The existing site has assets/QuantumLynx_Capabilities.pdf. No page in this design links to it."
