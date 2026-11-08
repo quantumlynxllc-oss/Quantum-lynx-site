@@ -2,7 +2,7 @@ import { readiness } from '@/lib/content';
 import type { Priority } from '@/lib/content';
 
 export type ReadinessResult = { score: number; tier: 'ready' | 'exposed' | 'at_risk'; exposures: string[] };
-export type Attribution = Partial<Record<'landing_page' | 'referrer' | 'utm_source' | 'utm_medium' | 'utm_campaign' | 'gclid' | 'hutk', string>>;
+export type Attribution = Partial<Record<'landing_page' | 'referrer' | 'utm_source' | 'utm_medium' | 'utm_campaign' | 'gclid', string>>;
 export type Lead = {
   channel: 'form' | 'readiness' | 'assistant' | 'voice';
   email: string;

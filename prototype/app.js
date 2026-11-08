@@ -189,7 +189,7 @@
       var crisis = state.priority === 'crisis';
       return '<div><div class="ql-eyebrow">Received</div><div class="ql-h3" style="margin-top:12px">' +
         (crisis ? 'Crisis request received. Call [CRISIS LINE] if this cannot wait.' : 'Received. Expect a reply within 1 business day.') + '</div>' +
-        '<div class="qs-portrait" style="aspect-ratio:auto;height:200px;max-width:none;margin-top:20px">[HUBSPOT MEETINGS SCHEDULER]</div>' +
+        '<div class="qs-portrait" style="aspect-ratio:auto;height:200px;max-width:none;margin-top:20px">[ZOHO BOOKINGS SCHEDULER]</div>' +
         '<div class="qs-cta" style="margin-top:16px"><button class="ql-btn ql-btn-ghost" type="button" data-action="consult-reset">Send another</button><a class="ql-btn ql-btn-ghost" href="#/inbox">See the lead record</a></div></div>';
     }
     var options = D.triage.concat([{ id: 'other', label: 'Something else' }]).map(function (t) {
@@ -253,7 +253,7 @@
         '<div class="qs-check"><div>' + qs + '</div><aside class="qs-score" aria-live="polite" id="score-slot">' + scorePanel() + '</aside></div></div></section></main>' + footer();
     },
     assistant: function () {
-      return nav('') + '<main><section class="ql-section" style="padding-top:64px"><div class="ql-container"><div class="ql-sec-head" style="margin-bottom:40px"><div class="ql-eyebrow">Intake assistant · Scripted demo</div><h1 class="ql-h1" style="margin-top:16px">Every conversation becomes a clean lead.</h1><p class="ql-body-lg" style="color:var(--fg-2);margin-top:16px">Pick replies on the left. The record on the right fills in the way it will in HubSpot.</p></div>' +
+      return nav('') + '<main><section class="ql-section" style="padding-top:64px"><div class="ql-container"><div class="ql-sec-head" style="margin-bottom:40px"><div class="ql-eyebrow">Intake assistant · Scripted demo</div><h1 class="ql-h1" style="margin-top:16px">Every conversation becomes a clean lead.</h1><p class="ql-body-lg" style="color:var(--fg-2);margin-top:16px">Pick replies on the left. The record on the right fills in the way it will in Zoho.</p></div>' +
         '<div class="qs-lab" id="chat-slot">' + chatPanels() + '</div></div></section></main>' + footer();
     },
     consultPage: function () { return nav('') + '<main>' + consult(false) + '</main>' + footer(); },
@@ -345,7 +345,7 @@
     var brief = crm.email ? svc + ' request. ' + (crm.timeline ? 'Timeline ' + crm.timeline.replace(/_/g, ' ') + '. ' : '') + 'Open with the top three exposures.' : '';
     var rows = [['email', crm.email], ['ql_priority', crm.priority], ['ql_recommended_service', svc], ['ql_facility_type', crm.facility_type], ['ql_timeline', crm.timeline], ['ql_lead_score', score ? String(score) : ''], ['ql_route', route], ['ql_ai_brief', brief]];
     return '<div class="qs-chat"><div class="qs-chat-h"><img src="' + LOGO + '" alt=""><span>Quantum Lynx intake</span><span class="qs-tag">Automated</span></div><div class="qs-chat-b" aria-live="polite">' + log + '</div><div class="qs-replies">' + replies + '</div><div class="qs-disclose">Automated assistant, not clinical advice. Do not share patient information.</div></div>' +
-      '<div class="qs-crm"><div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px"><span class="ql-label" style="color:#B4BAC1">HubSpot contact record</span><span class="qs-tag ' + tone[0] + '">' + tone[1] + '</span></div><div class="qs-kv">' +
+      '<div class="qs-crm"><div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px"><span class="ql-label" style="color:#B4BAC1">Zoho lead record</span><span class="qs-tag ' + tone[0] + '">' + tone[1] + '</span></div><div class="qs-kv">' +
       rows.map(function (r) { return '<div class="k">' + r[0] + '</div><div class="v' + (r[1] ? '' : ' off') + '">' + esc(r[1] || 'Waiting') + '</div>'; }).join('') +
       '</div><p class="qs-fine" style="margin-top:16px">Apollo adds company data after submit. The form never asks for it.</p></div>';
   }

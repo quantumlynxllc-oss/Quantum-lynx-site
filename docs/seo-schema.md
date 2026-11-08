@@ -95,10 +95,10 @@ Render JSON-LD in a server component with a `<script type="application/ld+json">
 - Keep the GA4 property so reporting history continues.
 - Set `<meta name="robots" content="noindex">` on Vercel previews.
 
-## When the owner buys a domain
+## Domain cutover: quantumlynx.io
 
 1. Add it to the `quantum-lynx-site` project in Vercel and follow Vercel's DNS steps.
 2. Set `NEXT_PUBLIC_SITE_URL` to the new address and redeploy.
 3. Add it to the allowed domains in Formspree and Cloudflare Turnstile.
-4. Update the GA4 web stream and the tracked domains in HubSpot.
+4. Update the GA4 web stream to quantumlynx.io; HubSpot tracking is removed.
 5. Add it to Google Search Console and submit the sitemap.

@@ -110,13 +110,15 @@ try {
   report.interactions.push('Keyboard skip link reaches main content with visible focus');
   assert.equal(trackers.length, 0);
   await choicesPage.getByRole('button', { name: 'Accept', exact: true }).click();
-  await choicesPage.waitForFunction(() => document.querySelector('#ql-ga4') && document.querySelector('#hs-script-loader'));
+  await choicesPage.waitForFunction(() => document.querySelector('#ql-ga4'));
+  assert.equal(await choicesPage.locator('#hs-script-loader').count(), 0);
+  assert.ok(!trackers.some(url => /hs-scripts/.test(url)), 'the retired HubSpot tracker never loads');
   await choicesPage.getByRole('button', { name: 'The IP role is vacant', exact: true }).click();
   const events = await choicesPage.evaluate(() => (window.dataLayer || []).map(value => Array.from(value)));
   assert.ok(events.some(event => event[0] === 'event' && event[1] === 'triage_select' && event[2]?.priority === 'vacant'));
   assert.ok(!JSON.stringify(events).includes('website-test@example.org'));
   const acceptedRequests = trackers.length;
-  assert.ok(acceptedRequests >= 2);
+  assert.ok(acceptedRequests >= 1);
   await choicesPage.getByRole('button', { name: 'Cookie settings', exact: true }).click();
   await choicesPage.getByRole('button', { name: 'Decline', exact: true }).click();
   await choicesPage.waitForLoadState('load');

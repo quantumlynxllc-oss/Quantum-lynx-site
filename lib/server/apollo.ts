@@ -1,7 +1,7 @@
 import 'server-only';
 import { unstable_cache } from 'next/cache';
 import type { Lead } from '@/lib/lead';
-import type { Enrichment } from '@/lib/server/hubspot';
+import type { Enrichment } from '@/lib/server/lead-context';
 import { companyDomain } from '@/lib/server/scoring';
 type Organization = { name?: string; estimated_num_employees?: number; city?: string; state?: string; country?: string };
 const pending = new Map<string, Promise<Enrichment | undefined>>();

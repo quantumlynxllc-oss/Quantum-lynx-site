@@ -490,7 +490,7 @@ window.QL_DATA = {
    "eyebrow": "Legal",
    "title": "Privacy and HIPAA/BAA",
    "lede": "How Quantum Lynx collects, uses, and protects information.",
-   "updated": "November 2, 2026",
+   "updated": "November 8, 2026",
    "sections": [
     {
      "heading": "Our commitment",
@@ -526,7 +526,7 @@ window.QL_DATA = {
       "We do not sell your information. We do not share it with third parties except as required by law or as necessary to deliver our services. These providers help us run this site and respond to you:"
      ],
      "items": [
-      "HubSpot, to manage contacts, forms, and scheduling.",
+      "Zoho CRM, to manage consultation requests, contacts, and follow-up.",
       "Apollo, to add public company details based on your work email domain and, if you accept cookies, to understand company visits.",
       "Google Analytics, to measure site use if you accept cookies.",
       "Cloudflare Turnstile, to block automated form submissions.",

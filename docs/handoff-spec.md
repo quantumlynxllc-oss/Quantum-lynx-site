@@ -117,7 +117,7 @@ Why the nav goes static on phones: it wraps to two rows and would take 15% of th
 
 - **Long facility names**: wrap. Never truncate lead data.
 - **Free email domains**: accept them, score lower, no Apollo lookup.
-- **Repeat visitor**: updates the same HubSpot contact.
+- **Repeat visitor**: updates the same Zoho Lead.
 - **Slow connection**: the page works without JS for reading. Forms show a loading state after 200ms.
 - **Fonts fail**: system stack holds the layout.
 - **Scheduler fails to load**: show "We will email you times instead."

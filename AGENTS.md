@@ -4,7 +4,7 @@ Read this file first. It applies to Claude Code, Codex, and any other agent.
 
 ## What this is
 
-A lead-generation marketing site for Quantum Lynx LLC, an infection control consulting firm. It replaces the existing site at https://quantum-lynx-site.vercel.app. The owner has not bought a domain yet and will do that after approving the final build.
+A lead-generation marketing site for Quantum Lynx LLC, an infection control consulting firm. It replaces the existing site at https://quantum-lynx-site.vercel.app. The owner purchased quantumlynx.io at Namecheap on November 8, 2026 and switched the CRM to Zoho. This supersedes the original launch brief.
 
 Audience: administrators, CNOs, and quality leaders at physician-owned hospitals and surgical centers.
 
@@ -30,10 +30,10 @@ Build the prototype as a production site, with the same layout, copy, and behavi
 | SLA and Privacy text | `schema/legal.json` |
 | Routes, titles, redirects | `schema/site.json` |
 | Lead API contract | `schema/lead.schema.json` |
-| HubSpot custom fields | `schema/hubspot-properties.json` |
+| Zoho lead fields, notes, and tasks | `lib/server/zoho.ts`, `lib/server/lead-context.ts` |
 | Tokens and styles | `design/tokens.css`, `design/kit.css`, `design/site.css` |
 | Component and state spec | `docs/handoff-spec.md` |
-| HubSpot, Apollo, Claude, routing, analytics | `docs/integrations.md` |
+| Zoho, Apollo, Claude, routing, analytics | `docs/integrations.md` |
 | Structured data and metadata | `docs/seo-schema.md` |
 | Which claims are cleared | `docs/claims-ledger.md` |
 | Logos, icons, and share image | `assets/` |
@@ -49,7 +49,7 @@ After any change in `schema/`, run `python3 tools/build-prototype-data.py`. Afte
 - Next.js App Router, TypeScript, strict mode. Create the app in the root of this folder and leave the existing folders where they are.
 - Import content from `schema/` directly. Do not copy it into components.
 - Deploy to the existing Vercel project `quantum-lynx-site`. Ask the owner which Git repository it deploys from before you push anything.
-- MDX for Insights in Phase 3. No CMS and no database at launch. HubSpot is the system of record.
+- MDX for Insights in Phase 3. No CMS and no database at launch. Zoho CRM is the system of record.
 - Render service pages from `schema/services.json` with `generateStaticParams`.
 
 ## Keep the design exact
@@ -67,8 +67,8 @@ After any change in `schema/`, run `python3 tools/build-prototype-data.py`. Afte
 2. Build the shell: nav, footer, consent banner, focus states, phone behavior.
 3. Build Home, Services, service pages, About, Consult, Readiness Check, Privacy, SLA, and the not-found page.
 4. Build `POST /api/lead` from `schema/lead.schema.json`, with validation, Turnstile, a honeypot, and rate limiting.
-5. Connect HubSpot, then Apollo, then routing, in that order.
-6. Add consent-gated GA4, HubSpot tracking, and the Apollo tracker, plus the events in `docs/integrations.md`.
+5. Connect Zoho, then Apollo, then routing, in that order.
+6. Add consent-gated GA4 and the Apollo tracker, plus the events in `docs/integrations.md`.
 7. Add metadata, JSON-LD, sitemap, robots, share image, and the redirects in `schema/site.json`.
 8. Test on a Vercel preview. Compare each page with `design/reference/` at 1440px and 390px. Promote to production only after the owner approves.
 
@@ -84,9 +84,9 @@ Keep building. Do not invent the missing item or stop the work.
 
 | Missing | What to do |
 |---|---|
-| Domain | None has been bought. Work on Vercel previews and build every absolute URL from `NEXT_PUBLIC_SITE_URL`. Never hardcode a domain, and do not buy or connect one |
-| `[HEADSHOT]`, `[CRISIS LINE]`, `[BUSINESS EMAIL]`, `[HUBSPOT MEETINGS SCHEDULER]` | Leave the placeholder visible and list it in your handoff |
-| HubSpot token, form GUID, or custom fields | Put all HubSpot calls in one module. Until the values exist, send leads to `FORMSPREE_FAILOVER_URL` |
+| Domain | quantumlynx.io is owned at Namecheap and assigned to the existing Vercel project. Build every absolute URL from `NEXT_PUBLIC_SITE_URL`. Preserve unrelated DNS and email records. Verify DNS, HTTPS, and Turnstile before cutover |
+| `[HEADSHOT]`, `[CRISIS LINE]`, `[BUSINESS EMAIL]`, `[ZOHO BOOKINGS SCHEDULER]` | Leave the placeholder visible and list it in your handoff |
+| Zoho OAuth credentials | Keep calls in `lib/server/zoho.ts`. Until website credentials exist, send leads to `FORMSPREE_FAILOVER_URL`. The chat connector does not provide website authorization. The account has no custom-field capacity; keep structured context in attached notes and tasks |
 | Apollo key | Skip enrichment when `APOLLO_API_KEY` is empty. The lead still routes |
 | Turnstile keys | Use Cloudflare's test keys on previews |
 | Vercel access | Ask the owner. Do not create a new project |
@@ -96,10 +96,10 @@ Keep building. Do not invent the missing item or stop the work.
 
 1. **No PHI.** Forms, chat, voice, analytics, and logs must never collect patient information. Show the notice on every input surface. Filter on the client and again on the server. Never log request bodies.
 2. **No new claims.** Only publish numbers and statements marked cleared in `docs/claims-ledger.md`. Never invent a statistic, client, credential, or testimonial. Never publish a survey success rate or a crisis response time.
-3. **Never lose a lead.** If HubSpot fails, send to the Formspree failover and alert the owner. The visitor still sees success.
+3. **Never lose a lead.** If Zoho fails, send to the Formspree failover and alert the owner. The visitor still sees success.
 4. **Crisis goes to a person.** Crisis priority always routes to `call_now`, whatever the score. AI never tries to resolve a crisis or give clinical advice.
 5. **Secrets stay on the server.** No key reaches the client bundle. Use `.env.example` names.
-6. **Keep the placeholders visible.** `[HEADSHOT]`, `[CRISIS LINE]`, `[BUSINESS EMAIL]`, and `[HUBSPOT MEETINGS SCHEDULER]` stay until the owner supplies the real thing.
+6. **Keep the placeholders visible.** `[HEADSHOT]`, `[CRISIS LINE]`, `[BUSINESS EMAIL]`, and `[ZOHO BOOKINGS SCHEDULER]` stay until the owner supplies the real thing.
 7. **Do not touch the Google Drive folder `Business Elements`.** It is the owner's read-only source.
 
 ## Voice
@@ -113,8 +113,8 @@ Calm, exact, no adjectives you did not earn. Lead with the verb, then the number
 - Lighthouse 90+ on performance, accessibility, best practices, and SEO on phone and desktop.
 - WCAG 2.2 AA: keyboard path through every flow, visible focus, 4.5:1 text contrast, 44px targets.
 - No horizontal scroll at 320px.
-- A test lead appears in HubSpot with the right `ql_` fields and route.
-- A forced HubSpot failure still delivers the lead.
+- A test lead appears in Zoho with the full intake context in its notes and the correct follow-up task.
+- A forced Zoho failure still delivers the lead.
 - A message containing patient details is rejected and not stored.
 - With consent declined, no tracker loads and every form still works.
 - No console errors. `tsc` and lint pass.

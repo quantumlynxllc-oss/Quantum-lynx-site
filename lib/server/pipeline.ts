@@ -1,6 +1,7 @@
 import 'server-only';
 import type { Lead } from '@/lib/lead';
-import { captureHubspot, updateCompany, updateLead, routeTask, type Enrichment } from '@/lib/server/hubspot';
+import { captureZoho, updateCompany, updateLead, routeTask } from '@/lib/server/zoho';
+import type { Enrichment } from '@/lib/server/lead-context';
 import { enrichCompany, enrollConsult } from '@/lib/server/apollo';
 import { failover, alertOwner } from '@/lib/server/delivery';
 import { routeLead } from '@/lib/server/scoring';
@@ -14,18 +15,18 @@ type Dependencies = {
   task: typeof routeTask;
   sequence: (lead: Lead) => Promise<boolean>;
 };
-export const integrations: Dependencies = { capture: captureHubspot, backup: failover, alert: alertOwner, enrich: enrichCompany, company: updateCompany, update: updateLead, task: routeTask, sequence: enrollConsult };
+export const integrations: Dependencies = { capture: captureZoho, backup: failover, alert: alertOwner, enrich: enrichCompany, company: updateCompany, update: updateLead, task: routeTask, sequence: enrollConsult };
 export async function deliverLead(input: Lead, deps = integrations) {
   // Anti-abuse tokens are never persisted in either delivery destination.
   const { turnstile_token: _token, website: _website, ...lead } = input;
   void _token; void _website;
   try {
     const contact = await deps.capture(lead);
-    return { destination: 'hubspot' as const, contactId: contact.id, lead };
+    return { destination: 'zoho' as const, contactId: contact.id, lead };
   } catch {
     // Success is reported only after a real destination accepts the lead.
-    await deps.backup(lead, 'hubspot_unavailable');
-    await deps.alert('hubspot_failover', routeLead(lead)).catch(() => {});
+    await deps.backup(lead, 'zoho_unavailable');
+    await deps.alert('zoho_failover', routeLead(lead)).catch(() => {});
     return { destination: 'failover' as const, lead };
   }
 }
@@ -41,7 +42,7 @@ export async function finishLead(lead: Lead, contactId: string, deps = integrati
     await deps.backup(enriched, 'crisis_priority_alert');
     await deps.alert('crisis_request', route, contactId).catch(() => {});
   } else if (route === 'consult_sequence') {
-    try { await deps.sequence(enriched); } catch { /* The HubSpot task is already queued. */ }
+    try { await deps.sequence(enriched); } catch { /* The Zoho task is already queued. */ }
   }
   if (work.some(result => result.status === 'rejected')) {
     await deps.backup(enriched, 'routing_needs_review');
