@@ -68,3 +68,5 @@ The owner selected Wednesday, Thursday, and Friday, 10 a.m.–2 p.m. in `America
 - Inline URL: https://quantumlynxllc.zohobookings.com/portal-embed#/4935751000000039045
 - Event ID: `4935751000000039045`
 - The website captures the CRM lead before showing the scheduler. Native Bookings-to-CRM synchronization is not enabled; the verified website intake remains the CRM path.
+
+The inline booking calendar was verified after a real preview intake with consent declined, with the corresponding CRM note and task confirmed. The synthetic follow-up task was completed. Zoho’s embedded calendar is narrow inside the phone form card, so the confirmation also offers a direct booking-page link in a new tab. The public booking page is the same event and uses the same availability. No test appointment or confirmation email was generated.
