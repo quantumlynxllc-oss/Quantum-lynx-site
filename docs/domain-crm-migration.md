@@ -6,7 +6,12 @@ The owner purchased `quantumlynx.io` at Namecheap and requested Zoho CRM instead
 
 - Added `quantumlynx.io` to the existing Vercel project. Vercel reports ownership verified.
 - Added `www.quantumlynx.io` with a permanent 308 redirect to `quantumlynx.io`.
-- Set the canonical URL for the migration branch's Vercel preview to `https://quantumlynx.io`.
+- Set `NEXT_PUBLIC_SITE_URL=https://quantumlynx.io` for production and the migration preview. The next production build will use it for metadata and the sitemap.
+- Updated Namecheap: two apex A records (`216.198.79.1`, `64.29.17.1`) and the `www` CNAME (`b8cb04870f3c473e.vercel-dns-017.com`). Kept BasicDNS nameservers, the original SPF TXT record, and all five forwarding MX records. Public DNS checks passed.
+- Added both hostnames to the existing Turnstile widget while keeping the old Vercel hostname allowed.
+- Issued an automatically renewing certificate for both names. Verified HTTPS 200 on the apex and HTTPS 308 to the apex from `www` using Vercel's current addresses. Some local DNS caches may take longer to update.
+- After explicit owner approval, created a website-only Zoho OAuth self client for the Quantum Lynx production organization. Client ID, secret and refresh token are sensitive Vercel production/preview variables. The exchange used a temporary loopback-only helper and process memory; no credentials were saved to disk.
+- Cleared the retired HubSpot portal environment setting. No new Zoho marketing tracker was installed.
 - Confirmed Zoho connector access by creating a synthetic Lead, attaching a note, and creating and reading a completed test task linked to that Lead. Test Lead ID: `7668958000000706001`; note ID: `7668958000000707001`; completed task ID: `7668958000000708001`. Test email is `website-integration-test@example.org`. No email campaign or notification was sent through the connector.
 - All eleven attempted custom fields returned `LIMIT_EXCEEDED`. No fields were created and no subscription was changed. The website stores the complete structured intake context in attached notes and task descriptions.
 
@@ -16,17 +21,25 @@ The owner purchased `quantumlynx.io` at Namecheap and requested Zoho CRM instead
 
 The HubSpot tracking script and cookie collection are removed. GA4 and optional Apollo remain consent-gated. Privacy now identifies Zoho CRM. The scheduler uses optional `NEXT_PUBLIC_ZOHO_BOOKINGS_URL`; `[ZOHO BOOKINGS SCHEDULER]` remains visible until a link is supplied. `[HEADSHOT]`, `[CRISIS LINE]`, and `[BUSINESS EMAIL]` remain unchanged. Historical HubSpot data has not been migrated.
 
-## Account steps still required
+## Delivery verification and release
 
-Chrome could not be attached through the available browser connection on two attempts. Namecheap, Cloudflare, and the Zoho API console could not be opened. These steps require reconnecting the browser or owner action.
+The owner signed in through the in-app browser after Chrome attachment continued to fail. The Zoho-enabled preview `dpl_2bwSkJUc9NDwJv6dKbQcCv4WU44t` reached READY.
 
-1. **Namecheap DNS:** open the domain's Advanced DNS. Replace only the conflicting website parking/URL redirect records. Vercel's current rank-one recommendations are A records on `@` with values `216.198.79.1` and `64.29.17.1`, and a CNAME on `www` with value `b8cb04870f3c473e.vercel-dns-017.com`. Recheck Vercel's domain-specific recommendations immediately before editing. Keep nameservers, MX, email-verification TXT, and other unrelated records. The latest check still showed Namecheap parking/redirect DNS, so the custom domain is not serving the site yet.
-2. **Cloudflare Turnstile:** add `quantumlynx.io` and `www.quantumlynx.io` to the existing Quantum Lynx widget's hostname allowlist. Keep `quantum-lynx-site.vercel.app` allowed during transition. Keep production verification enabled; do not use test keys in production.
-3. **Zoho website OAuth:** authorize a website-specific client for the intended organization. The chat connector cannot pass its authorization to Vercel. Required scopes are `ZohoCRM.modules.leads.READ,ZohoCRM.modules.leads.CREATE,ZohoCRM.modules.leads.UPDATE,ZohoCRM.modules.notes.CREATE,ZohoCRM.modules.tasks.CREATE,ZohoSearch.securesearch.READ`. Store `ZOHO_CLIENT_ID`, `ZOHO_CLIENT_SECRET`, and `ZOHO_REFRESH_TOKEN` directly as sensitive Vercel variables, with `ZOHO_ACCOUNTS_URL` matching the account's region. Do not put tokens in chat, source, logs, URLs, or the client bundle.
-4. **Formspree:** confirm the new domain is permitted if domain restrictions are enabled. Keep the existing failover endpoint.
-5. **Release:** verify a real preview form submission reaches Zoho with its note and task, and verify forced primary failure reaches Formspree. After DNS, HTTPS, and Turnstile work, set production `NEXT_PUBLIC_SITE_URL=https://quantumlynx.io`, remove the retired HubSpot environment variables, merge and deploy this branch, and verify both hostnames, canonical links, sitemap, robots and the old legal redirects. Update the GA4 web stream and Search Console property/sitemap for the new domain.
+A real preview consult submission with consent declined updated the synthetic Lead and created intake note `7668958000000712001`, routing note `7668958000000714001`, and task `7668958000000713001`. The stored route is `consult_sequence`, lead score 75, recommended service Survey Support.
 
-The existing production deployment and its canonical URL have not been changed by this migration. Leads there continue to use the existing Formspree delivery path. Until website OAuth is configured, the migration code also falls back to Formspree; connector verification alone is not proof of unattended website delivery.
+A real preview Readiness Check scored 6/12, tier `exposed`. It updated the same Lead, preserved `Website Integration Test` as its name, stored all three exposures and the timeline, and created intake note `7668958000000716001`, routing note `7668958000000717001`, and follow-up task `7668958000000705005`. The stored lead score is 65 and route `consult_sequence`.
+
+A separate synthetic request deliberately forced primary CRM failure and was accepted by the real Formspree fallback. Owner inbox receipt was not independently checked. Website OAuth delivery is verified independently of the chat connector.
+
+Production release and public-domain form checks follow these preview checks. Existing production rollback remains the November 2 deployment listed below.
+
+## Remaining owner configuration
+
+- Supply the actual Zoho Bookings URL to replace `[ZOHO BOOKINGS SCHEDULER]`. No scheduler was invented or paid service purchased.
+- `[HEADSHOT]`, `[CRISIS LINE]`, and `[BUSINESS EMAIL]` remain visible until supplied.
+- Requested readiness-summary emails and marketing follow-up still require manual response or an owner-configured automation. Capturing the result in Zoho does not configure outbound summary mail or subscribe a visitor to a newsletter.
+- Update the GA4 web stream URL and Google Search Console property/sitemap for the new domain. Existing GA4 measurement is retained and consent-gated.
+- Historical HubSpot contacts were not migrated; the request covers website lead delivery.
 
 ## Validation and recovery
 
@@ -34,7 +47,7 @@ The existing production deployment and its canonical URL have not been changed b
 - The production build passes with `NEXT_PUBLIC_SITE_URL=https://quantumlynx.io`.
 - The prototype data was rebuilt, and all 24 desktop/phone reference captures were regenerated. Earlier reference images and changed source instructions are preserved under ignored `reports/domain-crm-migration/`.
 - Local browser verification passed 45 page/viewport checks and ten interactions, with zero console errors, tracker requests after Decline, or automated accessibility violations. Evidence is in `reports/browser/verification.json`.
-- Draft review: https://github.com/quantumlynxllc-oss/Quantum-lynx-site/pull/2. The first Git-triggered migration preview reached READY. The connector could not fetch its protected content: Vercel Authentication rejected the temporary share link. Hosted form verification remains pending authenticated browser access.
+- Review: https://github.com/quantumlynxllc-oss/Quantum-lynx-site/pull/2. The connector could not fetch the first protected preview, but authenticated in-app browser verification of both real capture surfaces succeeded after sign-in.
 - Existing production rollback: `dpl_GYeNmL6dWZ694YQ1KvgYJvVDk68v`, commit `315d573df19b23a3cc04c8bd6f756e6643a30c16`.
 
 For future deployment administration, install the Vercel CLI with `npm i -g vercel`. Marketplace discovery through a temporary CLI required a separate Vercel login; the connected Vercel tools were used for project changes.

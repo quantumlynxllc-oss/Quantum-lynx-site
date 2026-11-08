@@ -1,6 +1,6 @@
 # Quantum Lynx website
 
-Production source for Quantum Lynx. The existing site is live at https://quantum-lynx-site.vercel.app. The November 8 domain and Zoho migration is described in `docs/domain-crm-migration.md`.
+Production source for Quantum Lynx. The primary domain is https://quantumlynx.io; the existing https://quantum-lynx-site.vercel.app address remains available. The November 8 domain and Zoho migration is described in `docs/domain-crm-migration.md`.
 
 ## See the demo
 
