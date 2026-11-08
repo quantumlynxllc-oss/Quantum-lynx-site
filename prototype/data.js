@@ -527,6 +527,7 @@ window.QL_DATA = {
      ],
      "items": [
       "Zoho CRM, to manage consultation requests, contacts, and follow-up.",
+      "Zoho Bookings, to schedule consultations, and Google Calendar and Google Meet, to manage availability and host consultation calls.",
       "Apollo, to add public company details based on your work email domain and, if you accept cookies, to understand company visits.",
       "Google Analytics, to measure site use if you accept cookies.",
       "Cloudflare Turnstile, to block automated form submissions.",
