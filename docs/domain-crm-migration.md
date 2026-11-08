@@ -30,10 +30,11 @@ The existing production deployment and its canonical URL have not been changed b
 
 ## Validation and recovery
 
-- TypeScript, lint, and all 13 unit/integration tests pass, including PHI rejection, readiness scoring, primary-destination failure, per-record Zoho errors, token refresh, existing-name preservation and crisis routing.
+- TypeScript, lint, and all 14 unit/integration tests pass, including PHI rejection, readiness scoring, primary-destination failure, per-record Zoho errors, token refresh, existing-name preservation and crisis routing.
 - The production build passes with `NEXT_PUBLIC_SITE_URL=https://quantumlynx.io`.
 - The prototype data was rebuilt, and all 24 desktop/phone reference captures were regenerated. Earlier reference images and changed source instructions are preserved under ignored `reports/domain-crm-migration/`.
-- Local browser verification is recorded in `reports/browser/verification.json`.
+- Local browser verification passed 45 page/viewport checks and ten interactions, with zero console errors, tracker requests after Decline, or automated accessibility violations. Evidence is in `reports/browser/verification.json`.
+- Draft review: https://github.com/quantumlynxllc-oss/Quantum-lynx-site/pull/2. The first Git-triggered migration preview reached READY. The connector could not fetch its protected content: Vercel Authentication rejected the temporary share link. Hosted form verification remains pending authenticated browser access.
 - Existing production rollback: `dpl_GYeNmL6dWZ694YQ1KvgYJvVDk68v`, commit `315d573df19b23a3cc04c8bd6f756e6643a30c16`.
 
 For future deployment administration, install the Vercel CLI with `npm i -g vercel`. Marketplace discovery through a temporary CLI required a separate Vercel login; the connected Vercel tools were used for project changes.

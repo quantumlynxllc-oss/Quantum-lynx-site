@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { captureZoho, routeTask } from '../lib/server/zoho';
 import { deliverLead } from '../lib/server/pipeline';
+import { failover } from '../lib/server/delivery';
 import type { Lead } from '../lib/lead';
 
 const lead: Lead = { channel: 'form', name: 'Website Test', email: 'website-test@example.org', company: 'Sample Facility', jobtitle: 'Quality director', priority: 'survey', consent_version: 'v1' };
@@ -12,6 +13,17 @@ function configure() {
   process.env.ZOHO_CLIENT_SECRET = 'test-secret'; process.env.ZOHO_REFRESH_TOKEN = 'test-refresh';
   process.env.ZOHO_ACCOUNTS_URL = 'https://accounts.zoho.com';
 }
+
+test('Formspree backup keeps a flat payload and the full attribution and intake values', async t => {
+  t.mock.method(globalThis, 'fetch', async (_url: string, init: RequestInit) => {
+    const body = JSON.parse(String(init.body));
+    assert.ok(Object.values(body).every(value => typeof value === 'string' || typeof value === 'number'));
+    assert.equal(body.utm_campaign, 'survey-support'); assert.equal(body.ql_landing_page, '/consult');
+    assert.equal(body.ql_route, 'consult_sequence'); assert.equal(body.delivery_reason, 'zoho_unavailable');
+    return Response.json({ ok: true });
+  });
+  await failover({ ...lead, attribution: { landing_page: '/consult', utm_campaign: 'survey-support' } }, 'zoho_unavailable');
+});
 
 test('new Zoho intake deduplicates by email and appends all context without custom fields', async t => {
   configure(); const paths: string[] = [];

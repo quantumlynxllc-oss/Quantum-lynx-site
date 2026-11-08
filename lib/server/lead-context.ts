@@ -15,7 +15,7 @@ export function leadProperties(lead: Lead) {
     ql_readiness_score: lead.readiness?.score, ql_readiness_tier: lead.readiness?.tier,
     ql_top_exposures: lead.readiness?.exposures.join('\n'),
     ql_lead_score: scoreLead(lead), ql_route: routeLead(lead),
-    ql_landing_page: lead.attribution?.landing_page, attribution: lead.attribution,
+    ql_landing_page: lead.attribution?.landing_page, ...lead.attribution,
     consent_version: lead.consent_version
   };
   return Object.fromEntries(Object.entries(values).filter(([, value]) => value !== undefined));
