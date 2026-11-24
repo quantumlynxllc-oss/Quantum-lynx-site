@@ -23,7 +23,6 @@ html.ql-fonts {
 .ql-record-caption { color: var(--fg-2); margin-top: 16px; }
 .ql-record-copy { margin: 12px 0 0; max-width: 340px; }
 .ql-principal-copy { margin-top: 20px; color: var(--fg-2); }
-.ql-portrait-wrap { display: flex; justify-content: center; }
 .ql-consult-title { color: var(--ql-white); margin-top: 16px; max-width: 520px; }
 .ql-consult-copy { color: var(--ql-slate-300); margin-top: 24px; max-width: 480px; }
 .ql-confirm-title { margin-top: 12px; }

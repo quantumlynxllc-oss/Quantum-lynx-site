@@ -20,7 +20,7 @@
           "rows": [
             ["Standard request", "Reply within 1 business day"],
             ["Request sent after hours", "Reply on the next business day"],
-            ["Crisis request: outbreak, disaster, or CMS Immediate Jeopardy", "Priority response. Call [CRISIS LINE]"]
+            ["Crisis request: outbreak, disaster, or CMS Immediate Jeopardy", "Priority response."]
           ]
         },
         "paragraphs": [
